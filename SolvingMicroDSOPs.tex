@@ -1,17 +1,18 @@
-\input{.resources/texlive/add_search_paths} % allow latex to find custom stuff
+\input{.resources/add-tex-search-paths} % allow latex to find custom stuff
 
 \documentclass[titlepage, headings=optiontotocandhead]{econtex}
 \newcommand{\texname}{SolvingMicroDSOPs} % Keyname for the paper
 
 % specific to this paper
-%\usepackage{econark-titlepage} % custom titlepage
+% \usepackage{econark-titlepage} % custom titlepage
+% These are in various subdirectories searched by add-latex-search-paths
 \usepackage{local-macros}      % defns for this project
-\usepackage{econark}           % econark defns
+\usepackage{local-econark}     % econark defns
 \usepackage{llorracc-handouts} % allow references to llorracc-handouts
 \usepackage{owner}             % llorracc or econ-ark?
 \usepackage{local-packages}    % LaTeX config in ./resources/latex
 
-% booleans control whether certain features are on or off:
+% booleans control whether certain options are on or off:
 \input{SolvingMicroDSOPs-options}   
 
 % replace macros with their referents using demacro
@@ -20,7 +21,7 @@
 \ifthenelse{\boolean{demacro}}{\usepackage{SolvingMicroDSOPs-private}}{}
 
 % Only operative when running demacro script on document-clean
-% (a make script changes the name to end in -private)
+% (a 'make script' changes the name to end in -private)
 \provideboolean{demacromore}\setboolean{demacromore}{false}
 \ifthenelse{\boolean{demacromore}}{\usepackage{SolvingMicroDSOPs-econark}}{}
 
@@ -103,7 +104,9 @@
 % eval: (add-to-list 'TeX-fold-env-spec-list '("[comment]" ("comment"))) 
 % eval: (add-to-list 'TeX-fold-math-spec-list '("[eq]" ("equation"))) 
 % eval: (add-to-list 'TeX-fold-math-spec-list '("[inline]" ("\\(" "\\)")))
+% eval: (prettify-symbols-mode 1)
 % eval: (setq prettify-symbols-unprettify-at-point 'right-edge)
+% eval: (setq debug-on-error t)
 % eval: (TeX-fold-buffer)
 % End:
 

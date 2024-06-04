@@ -20,7 +20,7 @@
   an upper bound for the ${\vInv}$ function in the presence of uncertainty, and the value function
   for the pessimist is a lower bound. Analogously to \eqref{eq:koppa}, define an upper-case
   \begin{equation}\begin{gathered}\begin{aligned}
-        \hat{\Koppa}_{\prd}(\mu_{\prd})   & = \left(\frac{\bar{\vInv}_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})-\vInv_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} (\PDVCoverc_{\prd}^{T})^{1/(1-\CRRA)}}\right) \label{eq:Koppa}
+        \hat{\Koppa}_{\prd}(\mu_{\prd})   & = \left(\frac{\bar{\vInv}_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})-\vInv_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} (\PDVCoverc_{\prd}^{T})^{1/(1-\CRRA)}}\right) \label{eq:Koppa}
       \end{aligned}\end{gathered}\end{equation}
   \MPCMatch{with derivative (dropping arguments)
     \begin{equation}\begin{gathered}\begin{aligned}
@@ -37,7 +37,7 @@
           \hat{\Chi}_{\prd}^{\mu}  & = \left(\frac{-\hat{\Koppa}_{\prd}^{\mu}/\hat{\Koppa}_{\prd}^{2}}{1/\hat{\Koppa}_{\prd}-1}\right)
         \end{aligned}\end{gathered}\end{equation}}{}
   and if we approximate these objects then invert them (as above with
-  the $\Hi{\koppa}$ and $\Hi{\chiFunc}$ functions) we obtain a very high-quality
+  the $\Max{\koppa}$ and $\Max{\chiFunc}$ functions) we obtain a very high-quality
   approximation to our inverted value function at the same points for
   which we have our approximated value function:
   \begin{equation}\begin{gathered}\begin{aligned}

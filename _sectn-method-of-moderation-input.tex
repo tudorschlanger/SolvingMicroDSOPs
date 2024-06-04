@@ -45,7 +45,7 @@
     probabilities of the future risks and optimizes accordingly.}
 
   A first useful point is that, for the realist, a lower bound for the
-  level of market resources is $\Lo{m}_{\prd} = -\hEndMin_{\EndStg}$, because
+  level of market resources is $\Min{m}_{\prd} = -\hEndMin_{\EndStg}$, because
   if $m_{\prd}$ equalled this value then there would be a positive finite
   chance (however small) of receiving \PermShkOn
   {$\tranShkEmp_{t+n}=\tranShkEmpMin$ and $\permShk_{t+n}=\permShkMin$}
@@ -55,17 +55,17 @@
   to zero in order to guarantee that the intertemporal budget constraint
   holds\ctw{.}{~(this is the multiperiod generalization of the discussion in
     section \ref{subsec:LiqConstrSelfImposed} explaining the derivation of the `natural borrowing constraint' for period $\trmT-1$,
-    $\Lo{a}_{\prd-1}$).}  Since consumption of zero yields negative
+    $\Min{a}_{\prd-1}$).}  Since consumption of zero yields negative
   infinite utility, the solution to realist consumer's problem is not well
-  defined for values of $m_{\prd} < \Lo{m}_{\prd}$, and the limiting
-  value of the realist's $c_t$ is zero as $m_{\prd} \downarrow \Lo{m}_{\prd}$.
+  defined for values of $m_{\prd} < \Min{m}_{\prd}$, and the limiting
+  value of the realist's $c_t$ is zero as $m_{\prd} \downarrow \Min{m}_{\prd}$.
 
   Given this result, it will be convenient to define `excess' market
   resources as the amount by which actual resources exceed the lower
   bound, and `excess' human wealth as the amount by which mean expected human wealth
   exceeds guaranteed minimum human wealth:
   \begin{equation*}\begin{gathered}\begin{aligned}
-        \aboveMin \mNrm_{\prd}  & = m_{\prd}+\overbrace{\hEndMin_{\EndStg}}^{=-\Lo{m}_{\prd}}
+        \aboveMin \mNrm_{\prd}  & = m_{\prd}+\overbrace{\hEndMin_{\EndStg}}^{=-\Min{m}_{\prd}}
         \\  \aboveMin \hNrm_{\EndStg}  & = \hNrm_{\EndStg}-\hEndMin_{\EndStg}.
       \end{aligned}\end{gathered}\end{equation*}
 
@@ -95,7 +95,7 @@
   \hypertarget{IntExpFOCInvPesReaOptNeedHiPlot}{}
   \begin{figure}
     \includegraphics[width=6in]{./Figures/IntExpFOCInvPesReaOptNeedHiPlot}
-    \caption{Moderation Illustrated: $\Lo{\cFunc}_{\prd-1} < \Aprx{\cFunc}_{\prd-1} < \bar{\cFunc}_{\prd-1}$}
+    \caption{Moderation Illustrated: $\Min{\cFunc}_{\prd-1} < \Aprx{\cFunc}_{\prd-1} < \bar{\cFunc}_{\prd-1}$}
     \label{fig:IntExpFOCInvPesReaOptNeedHiPlot}
   \end{figure}
 
@@ -106,10 +106,10 @@
 
   \begin{center}
     \begin{tabular}{rcl}
-      $ \aboveMin \mNrm_{\prd} \MPCmin_{\prd} < $ & $ \cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $  $< (\aboveMin \mNrm_{\prd}+\aboveMin \hNrm_{\EndStg})\MPCmin_{\prd} $
-      \\  $- \aboveMin \mNrm_{\prd} \MPCmin_{\prd} > $ & $ -\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> -(\aboveMin \mNrm_{\prd}+\aboveMin \hNrm_{\EndStg})\MPCmin_{\prd} $
-      \\  $ \aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} > $ & $ \bar{\cFunc}_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd})-\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> 0$
-      \\  $1 > $ & $ \underbrace{\left(\frac{\bar{\cFunc}_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd})-\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}}\right)}_{\equiv \Hi{\koppa}_{\prd}} $ & $> 0$
+      $ \aboveMin \mNrm_{\prd} \MPCmin_{\prd} < $ & $ \cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $  $< (\aboveMin \mNrm_{\prd}+\aboveMin \hNrm_{\EndStg})\MPCmin_{\prd} $
+      \\  $- \aboveMin \mNrm_{\prd} \MPCmin_{\prd} > $ & $ -\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> -(\aboveMin \mNrm_{\prd}+\aboveMin \hNrm_{\EndStg})\MPCmin_{\prd} $
+      \\  $ \aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} > $ & $ \bar{\cFunc}_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd})-\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> 0$
+      \\  $1 > $ & $ \underbrace{\left(\frac{\bar{\cFunc}_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd})-\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}}\right)}_{\equiv \Max{\koppa}_{\prd}} $ & $> 0$
     \end{tabular}
   \end{center}
 
@@ -123,25 +123,25 @@
   Defining $\mu_{\prd} =
   \log \aboveMin \mNrm_{\prd}$ (which can range from $-\infty$ to $\infty$), the object in the middle of the last inequality is
   \begin{equation}\begin{gathered}\begin{aligned}
-        \Hi{\koppa}_{\prd}(\mu_{\prd})   & \equiv  \left(\frac{\bar{\cFunc}_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})-\cFunc_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}}\right), \label{eq:koppa}
+        \Max{\koppa}_{\prd}(\mu_{\prd})   & \equiv  \left(\frac{\bar{\cFunc}_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})-\cFunc_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}}\right), \label{eq:koppa}
       \end{aligned}\end{gathered}\end{equation}
   and we now define
   \begin{equation}\begin{gathered}\begin{aligned}
-        \Hi{\chiFunc}_{\prd}(\mu_{\prd})  & = \log \left(\frac{1-\Hi{\koppa}_{\prd}(\mu_{\prd})}{\Hi{\koppa}_{\prd}(\mu_{\prd})}\right)
-        \\  & = \log \left(1/\Hi{\koppa}_{\prd}(\mu_{\prd})-1\right) \label{eq:chi}
+        \Max{\chiFunc}_{\prd}(\mu_{\prd})  & = \log \left(\frac{1-\Max{\koppa}_{\prd}(\mu_{\prd})}{\Max{\koppa}_{\prd}(\mu_{\prd})}\right)
+        \\  & = \log \left(1/\Max{\koppa}_{\prd}(\mu_{\prd})-1\right) \label{eq:chi}
       \end{aligned}\end{gathered}\end{equation}
   which has the virtue that it is linear in the limit as $\mu_{\prd}$ approaches $+\infty$.
 
-  Given $\Hi{\chiFunc}$, the consumption function can be recovered from
+  Given $\Max{\chiFunc}$, the consumption function can be recovered from
   \begin{equation}\begin{gathered}\begin{aligned}
-        \Hi{\cFunc}_{\prd}  & = \bar{\cFunc}_{\prd}-\overbrace{\left(\frac{1}{1+\exp(\Hi{\chiFunc}_{\prd})}\right)}^{=\Hi{\koppa}_{\prd}} \aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}. \label{eq:cFuncHi}
+        \Max{\cFunc}_{\prd}  & = \bar{\cFunc}_{\prd}-\overbrace{\left(\frac{1}{1+\exp(\Max{\chiFunc}_{\prd})}\right)}^{=\Max{\koppa}_{\prd}} \aboveMin \hNrm_{\EndStg} \MPCmin_{\prd}. \label{eq:cFuncHi}
       \end{aligned}\end{gathered}\end{equation}
 
-  Thus, the procedure is to calculate $\Hi{\chiFunc}_{\prd}$ at the points
+  Thus, the procedure is to calculate $\Max{\chiFunc}_{\prd}$ at the points
   $\vctr{\mu}_{\prd}$ corresponding to the log of the $\aboveMin
   \vctr{m}_{\prd}$ points defined above, and then using these to construct an
-  interpolating approximation $\Aprx{\Hi{\chiFunc}}_{\prd}$ from which we indirectly obtain our
-  approximated consumption rule $\Aprx{\Hi{\cFunc}}_{\prd}$ by substituting $\Aprx{\Hi{\chiFunc}}_{\prd}$ for $\Hi{\chiFunc}$ in equation \eqref{eq:cFuncHi}.
+  interpolating approximation $\Aprx{\Max{\chiFunc}}_{\prd}$ from which we indirectly obtain our
+  approximated consumption rule $\Aprx{\Max{\cFunc}}_{\prd}$ by substituting $\Aprx{\Max{\chiFunc}}_{\prd}$ for $\Max{\chiFunc}$ in equation \eqref{eq:cFuncHi}.
 
   Because this method relies upon the fact that the problem is easy to
   solve if the decision maker has unreasonable views (either in the
@@ -157,7 +157,7 @@
   \hypertarget{ExtrapProblemSolvedPlot}{}
   \begin{figure}
     \includegraphics[width=6in]{./Figures/ExtrapProblemSolvedPlot}
-    \caption{Extrapolated $\Aprx{\Hi{\cFunc}}_{\prd-1}$ Constructed Using the Method of Moderation}
+    \caption{Extrapolated $\Aprx{\Max{\cFunc}}_{\prd-1}$ Constructed Using the Method of Moderation}
     \label{fig:ExtrapProblemSolved}
   \end{figure}
 
@@ -165,7 +165,7 @@
 \subsection{Approximating the Slope Too}
 
 
-Until now, we have calculated the level of consumption at various different gridpoints and used linear interpolation\ctw{.}{ (either directly for $\cFunc_{\prd-1}$ or indirectly for, say, $\Hi{\chiFunc}_{\prd-1}$).}  But the resulting piecewise linear approximations have the unattractive feature that they are not differentiable at the `kink points' that correspond to the gridpoints where the slope of the function changes discretely.
+Until now, we have calculated the level of consumption at various different gridpoints and used linear interpolation\ctw{.}{ (either directly for $\cFunc_{\prd-1}$ or indirectly for, say, $\Max{\chiFunc}_{\prd-1}$).}  But the resulting piecewise linear approximations have the unattractive feature that they are not differentiable at the `kink points' that correspond to the gridpoints where the slope of the function changes discretely.
 
 
 
@@ -181,12 +181,12 @@ at those points.
 
 This requires us to differentiate \eqref{eq:koppa} and \eqref{eq:chi}, yielding
 \begin{equation}\begin{gathered}\begin{aligned}
-      \Hi{\koppa}_{\prd}^{\mu}(\mu_{\prd})   & = (\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd})^{-1}e^{\mu_{\prd}}\left(\MPCmin_{\prd}-\overbrace{\cFunc^{\mNrm}_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})}^{\equiv \MPCFunc_{\prd}(\mNrm_{\prd})}\right)  \label{eq:koppaPrime}
-      \\ \Hi{\chiFunc}_{\prd}^{\mu}(\mu_{\prd})  & = \left(\frac{-\Hi{\koppa}_{\prd}^{\mu}(\mu_{\prd})/\Hi{\koppa}_{\prd}^{2}}{1/\Hi{\koppa}_{\prd}(\mu_{\prd})-1}\right)
+      \Max{\koppa}_{\prd}^{\mu}(\mu_{\prd})   & = (\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd})^{-1}e^{\mu_{\prd}}\left(\MPCmin_{\prd}-\overbrace{\cFunc^{\mNrm}_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})}^{\equiv \MPCFunc_{\prd}(\mNrm_{\prd})}\right)  \label{eq:koppaPrime}
+      \\ \Max{\chiFunc}_{\prd}^{\mu}(\mu_{\prd})  & = \left(\frac{-\Max{\koppa}_{\prd}^{\mu}(\mu_{\prd})/\Max{\koppa}_{\prd}^{2}}{1/\Max{\koppa}_{\prd}(\mu_{\prd})-1}\right)
     \end{aligned}\end{gathered}\end{equation}
 and (dropping arguments) with some algebra these can be combined to yield
 \begin{equation}\begin{gathered}\begin{aligned}
-      \Hi{\chiFunc}_{\prd}^{\mu}  & = \left(\frac{\MPCmin_{\prd} \aboveMin \mNrm_{\prd} \aboveMin \hNrm_{\EndStg} (\MPCmin_{\prd}-\MPC_{\prd})}
+      \Max{\chiFunc}_{\prd}^{\mu}  & = \left(\frac{\MPCmin_{\prd} \aboveMin \mNrm_{\prd} \aboveMin \hNrm_{\EndStg} (\MPCmin_{\prd}-\MPC_{\prd})}
         {(\cFuncAbove_{\prd}-\cFunc_{\prd})(\cFuncAbove_{\prd}-\cFunc_{\prd} - \MPCmin_{\prd} \aboveMin \hNrm_{\EndStg})}\right).
     \end{aligned}\end{gathered}\end{equation}
 
@@ -218,14 +218,14 @@ which, together with the chain rule $\cEndStg^\aNrm  = \cFunc^{\mNrm}_{\MidStg}\
     \end{aligned}\end{gathered}\end{equation}
 
 
-Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule obtained using an interpolating polynomial approximation to $\Hi{\chiFunc}$ that matches both the level and the first derivative at the gridpoints, Figure~\ref{fig:IntExpFOCInvPesReaOptGapPlot} plots the difference between this latest approximation and the true consumption rule for period $\trmT-1$ up to the same large value (far beyond the largest gridpoint) used in prior figures.  Of course, at the gridpoints the approximation will exactly match the true function; but this figure illustrates that the approximation is quite accurate far beyond the last gridpoint (which is the last point at which the difference touches the horizontal axis).  (We plot here the difference between the two functions rather than the level plotted in previous figures, because in levels the difference between the approximate and the exact function would not be detectable even to the most eagle-eyed reader.)
+Designating $\Aprx{\Max{\cFunc}}_{\prd-1}$ as the approximated consumption rule obtained using an interpolating polynomial approximation to $\Max{\chiFunc}$ that matches both the level and the first derivative at the gridpoints, Figure~\ref{fig:IntExpFOCInvPesReaOptGapPlot} plots the difference between this latest approximation and the true consumption rule for period $\trmT-1$ up to the same large value (far beyond the largest gridpoint) used in prior figures.  Of course, at the gridpoints the approximation will exactly match the true function; but this figure illustrates that the approximation is quite accurate far beyond the last gridpoint (which is the last point at which the difference touches the horizontal axis).  (We plot here the difference between the two functions rather than the level plotted in previous figures, because in levels the difference between the approximate and the exact function would not be detectable even to the most eagle-eyed reader.)
 
 
 
 \hypertarget{IntExpFOCInvPesReaOptGapPlot}{}
 \begin{figure}
   \includegraphics[width=6in]{./Figures/IntExpFOCInvPesReaOptGapPlot}
-  \caption{Difference Between True $\cFunc_{\prd-1}$ and $\Aprx{\Hi{\cFunc}}_{\prd-1}$ Is Minuscule}
+  \caption{Difference Between True $\cFunc_{\prd-1}$ and $\Aprx{\Max{\cFunc}}_{\prd-1}$ Is Minuscule}
   \label{fig:IntExpFOCInvPesReaOptGapPlot}
 \end{figure}
 
@@ -283,7 +283,7 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
   an upper bound for the ${\vInv}$ function in the presence of uncertainty, and the value function
   for the pessimist is a lower bound. Analogously to \eqref{eq:koppa}, define an upper-case
   \begin{equation}\begin{gathered}\begin{aligned}
-        \hat{\Koppa}_{\prd}(\mu_{\prd})   & = \left(\frac{\bar{\vInv}_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})-\vInv_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} (\PDVCoverc_{\prd}^{T})^{1/(1-\CRRA)}}\right) \label{eq:Koppa}
+        \hat{\Koppa}_{\prd}(\mu_{\prd})   & = \left(\frac{\bar{\vInv}_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})-\vInv_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})}{\aboveMin \hNrm_{\EndStg} \MPCmin_{\prd} (\PDVCoverc_{\prd}^{T})^{1/(1-\CRRA)}}\right) \label{eq:Koppa}
       \end{aligned}\end{gathered}\end{equation}
   \MPCMatch{with derivative (dropping arguments)
     \begin{equation}\begin{gathered}\begin{aligned}
@@ -300,7 +300,7 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
           \hat{\Chi}_{\prd}^{\mu}  & = \left(\frac{-\hat{\Koppa}_{\prd}^{\mu}/\hat{\Koppa}_{\prd}^{2}}{1/\hat{\Koppa}_{\prd}-1}\right)
         \end{aligned}\end{gathered}\end{equation}}{}
   and if we approximate these objects then invert them (as above with
-  the $\Hi{\koppa}$ and $\Hi{\chiFunc}$ functions) we obtain a very high-quality
+  the $\Max{\koppa}$ and $\Max{\chiFunc}$ functions) we obtain a very high-quality
   approximation to our inverted value function at the same points for
   which we have our approximated value function:
   \begin{equation}\begin{gathered}\begin{aligned}
@@ -333,7 +333,7 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
   fact plus the strict concavity of the consumption function yields the
   proposition that
   \begin{equation}\begin{gathered}\begin{aligned}
-        \cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) & < \MPCmax_{\prd} \aboveMin \mNrm_{\prd}.
+        \cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) & < \MPCmax_{\prd} \aboveMin \mNrm_{\prd}.
       \end{aligned}\end{gathered}\end{equation}
 
   The solution method described above does not guarantee that
@@ -347,7 +347,7 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
     That is, the realist's consumption function is bounded from above by both
     the \textit{unconstrained} optimist's problem already treated, as well as
     by the \textit{constrained} optimist's problem, which is a 45 degree line
-    originating from $\Lo{m}_{\prd}$ on the $m$-axis, as shown in
+    originating from $\Min{m}_{\prd}$ on the $m$-axis, as shown in
     Figure~\ref{fig:IntExpFOCInvPesReaOptNeed45Plot}. The same is true for
     the value function, as illustrated in Figure
     \ref{fig:IntExpFOCInvPesReaOptNeed45ValuePlot}.
@@ -378,40 +378,40 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
         \aboveMin \mtCusp  & =  \frac{\MPCmin_{\prd}\aboveMin \hNrm_{\EndStg}}{(1-\MPCmin_{\prd})\MPCmax_{\prd}} \\
         \mtCusp  & =  \frac{\MPCmin_{\prd}\hNrm_{\EndStg}-\hEndMin_{\EndStg}}{(1-\MPCmin_{\prd})\MPCmax_{\prd}},
       \end{aligned}\end{gathered}\end{equation*}
-  we want to construct a consumption function for $m_{\prd} \in (\Lo{m}_{\prd}, \mtCusp]$ that respects the
+  we want to construct a consumption function for $m_{\prd} \in (\Min{m}_{\prd}, \mtCusp]$ that respects the
   tighter upper bound:
   \begin{center}
     \begin{tabular}{rcl}
-      $ \aboveMin \mNrm_{\prd} \MPCmin_{\prd} < $ & $ \cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $  $< \MPCmax_{\prd} \aboveMin \mNrm_{\prd} $
-      % \\  $-\aboveMin \mNrm_{\prd} \MPCmin_{\prd} > $ & $ -\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> -\aboveMin \mNrm_{\prd} $
-      \\  $ \aboveMin \mNrm_{\prd}(\MPCmax_{\prd}- \MPCmin_{\prd}) > $ & $ \MPCmax_{\prd} \aboveMin \mNrm_{\prd}-\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> 0$
-      \\  $1 > $ & $ \left(\frac{\MPCmax_{\prd} \aboveMin \mNrm_{\prd}-\cFunc_{\prd}(\Lo{m}_{\prd}+\aboveMin \mNrm_{\prd})}{\aboveMin \mNrm_{\prd}(\MPCmax_{\prd}- \MPCmin_{\prd})}\right) $ & $> 0$.
+      $ \aboveMin \mNrm_{\prd} \MPCmin_{\prd} < $ & $ \cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $  $< \MPCmax_{\prd} \aboveMin \mNrm_{\prd} $
+      % \\  $-\aboveMin \mNrm_{\prd} \MPCmin_{\prd} > $ & $ -\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> -\aboveMin \mNrm_{\prd} $
+      \\  $ \aboveMin \mNrm_{\prd}(\MPCmax_{\prd}- \MPCmin_{\prd}) > $ & $ \MPCmax_{\prd} \aboveMin \mNrm_{\prd}-\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd}) $ & $> 0$
+      \\  $1 > $ & $ \left(\frac{\MPCmax_{\prd} \aboveMin \mNrm_{\prd}-\cFunc_{\prd}(\Min{m}_{\prd}+\aboveMin \mNrm_{\prd})}{\aboveMin \mNrm_{\prd}(\MPCmax_{\prd}- \MPCmin_{\prd})}\right) $ & $> 0$.
     \end{tabular}
   \end{center}
 
   Again defining $\mu_{\prd} =\log \aboveMin \mNrm_{\prd}$, the object in the middle of the inequality is
   \begin{equation*}\begin{gathered}\begin{aligned}
-        \Lo{\koppa}_{\prd}(\mu_{\prd})  & \equiv  \frac{\MPCmax_{\prd}-\cFunc_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})e^{-\mu_{\prd}}}{\MPCmax_{\prd}-\MPCmin_{\prd}} \label{eq:koppaL}
-        \MPCMatch{\\ \Lo{\koppa}^{\mu}_{\prd}(\mu_{\prd})  & = \frac{\cFunc_{\prd}(\Lo{m}_{\prd}+e^{\mu_{\prd}})e^{-\mu_{\prd}}-\MPCFunc_{\prd}^{m}(\Lo{m}_{\prd}+e^{\mu_{\prd}})}{\MPCmax_{\prd}-\MPCmin_{\prd}}}{} .
+        \Min{\koppa}_{\prd}(\mu_{\prd})  & \equiv  \frac{\MPCmax_{\prd}-\cFunc_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})e^{-\mu_{\prd}}}{\MPCmax_{\prd}-\MPCmin_{\prd}} \label{eq:koppaL}
+        \MPCMatch{\\ \Min{\koppa}^{\mu}_{\prd}(\mu_{\prd})  & = \frac{\cFunc_{\prd}(\Min{m}_{\prd}+e^{\mu_{\prd}})e^{-\mu_{\prd}}-\MPCFunc_{\prd}^{m}(\Min{m}_{\prd}+e^{\mu_{\prd}})}{\MPCmax_{\prd}-\MPCmin_{\prd}}}{} .
       \end{aligned}\end{gathered}\end{equation*}
 
   As $m_{\prd}$ approaches
-  $-\Lo{m}_{\prd}$, $\Lo{\koppa}_{\prd}(\mu_{\prd})$ converges to zero, while as $m_{\prd}$
-  approaches $+\infty$, $\Lo{\koppa}_{\prd}(\mu_{\prd})$ approaches $1$.
+  $-\Min{m}_{\prd}$, $\Min{\koppa}_{\prd}(\mu_{\prd})$ converges to zero, while as $m_{\prd}$
+  approaches $+\infty$, $\Min{\koppa}_{\prd}(\mu_{\prd})$ approaches $1$.
 
-  As before, we can derive an approximated consumption function; call it $\Aprx{\Lo{\cFunc}}_{\prd}$.  This function will clearly do a better job approximating the consumption function for low values of $\mNrm_{\prd}$ while the previous approximation will perform better for high values of $\mNrm_{\prd}$.
+  As before, we can derive an approximated consumption function; call it $\Aprx{\Min{\cFunc}}_{\prd}$.  This function will clearly do a better job approximating the consumption function for low values of $\mNrm_{\prd}$ while the previous approximation will perform better for high values of $\mNrm_{\prd}$.
 
-  For middling values of $\mNrm$ it is not clear which of these functions will perform better.  However, an alternative is available which performs well.  Define the highest gridpoint below $\mtCusp$ as $\bar{\check{\mNrm}}_{\prd}^{\#}$ and the lowest gridpoint above $\mtCusp$ as $\Lo{\hat{\mNrm}}_{\prd}^{\#}$.  Then there will be a unique interpolating polynomial that matches the level and slope of the consumption function at these two points.  Call this function $\tilde{\cFunc}_{\prd}(\mNrm)$.
+  For middling values of $\mNrm$ it is not clear which of these functions will perform better.  However, an alternative is available which performs well.  Define the highest gridpoint below $\mtCusp$ as $\bar{\check{\mNrm}}_{\prd}^{\#}$ and the lowest gridpoint above $\mtCusp$ as $\Min{\hat{\mNrm}}_{\prd}^{\#}$.  Then there will be a unique interpolating polynomial that matches the level and slope of the consumption function at these two points.  Call this function $\tilde{\cFunc}_{\prd}(\mNrm)$.
 
   Using indicator functions that are zero everywhere except for specified intervals,
   \begin{equation*}\begin{gathered}\begin{aligned}
-        \vctr{1}_{\text{Lo}}(\mNrm)  & = 1 \text{~if $          \mNrm \leq  \bar{\check{\mNrm}}_{\prd}^{\#} \phantom{< \mNrm <   \Lo{\hat{\mNrm}}_{\prd}^{\#}          \leq \mNrm}$}
-        \\  \vctr{1}_{\text{Mid}}(\mNrm)  & = 1 \text{~if $\phantom{ \mNrm \leq}~ \bar{\check{\mNrm}}_{\prd}^{\#}          < \mNrm <   \Lo{\hat{\mNrm}}_{\prd}^{\#} \phantom{\leq \mNrm}$}
-        \\  \vctr{1}_{\text{Hi}}(\mNrm)  & = 1 \text{~if $\phantom{ \mNrm \leq  ~\bar{\check{\mNrm}}_{\prd}^{\#}          < \mNrm < } \Lo{\hat{\mNrm}}_{\prd}^{\#}           \leq \mNrm$}
+        \vctr{1}_{\text{Lo}}(\mNrm)  & = 1 \text{~if $          \mNrm \leq  \bar{\check{\mNrm}}_{\prd}^{\#} \phantom{< \mNrm <   \Min{\hat{\mNrm}}_{\prd}^{\#}          \leq \mNrm}$}
+        \\  \vctr{1}_{\text{Mid}}(\mNrm)  & = 1 \text{~if $\phantom{ \mNrm \leq}~ \bar{\check{\mNrm}}_{\prd}^{\#}          < \mNrm <   \Min{\hat{\mNrm}}_{\prd}^{\#} \phantom{\leq \mNrm}$}
+        \\  \vctr{1}_{\text{Hi}}(\mNrm)  & = 1 \text{~if $\phantom{ \mNrm \leq  ~\bar{\check{\mNrm}}_{\prd}^{\#}          < \mNrm < } \Min{\hat{\mNrm}}_{\prd}^{\#}           \leq \mNrm$}
       \end{aligned}\end{gathered}\end{equation*}
   we can define a well-behaved approximating consumption function
   \begin{equation}\begin{gathered}\begin{aligned}
-        \Aprx{\cFunc}_{\prd}  & = \vctr{1}_{\text{Lo}} \Aprx{\Lo{\cFunc}}_{\prd} + \vctr{1}_{\text{Mid}} \Aprx{\tilde{\cFunc}}_{\prd}+\vctr{1}_{\text{Hi}} \Aprx{\Hi{\cFunc}}_{\prd}.
+        \Aprx{\cFunc}_{\prd}  & = \vctr{1}_{\text{Lo}} \Aprx{\Min{\cFunc}}_{\prd} + \vctr{1}_{\text{Mid}} \Aprx{\tilde{\cFunc}}_{\prd}+\vctr{1}_{\text{Hi}} \Aprx{\Max{\cFunc}}_{\prd}.
       \end{aligned}\end{gathered}\end{equation}
 
   This just says that, for each interval, we use the approximation that
@@ -423,7 +423,7 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
     \hypertarget{IntExpFOCInvPesReaOpt45GapPlot}{}
     \begin{figure}
       \includegraphics[width=6in]{./Figures/IntExpFOCInvPesReaOpt45GapPlot}
-      \caption{Difference Between $\Aprx{\Hi{\cFunc}}_{L, T-1}$ and $\Aprx{\Hi{\cFunc}}_{H,T-1}$ is Small}
+      \caption{Difference Between $\Aprx{\Max{\cFunc}}_{L, T-1}$ and $\Aprx{\Max{\cFunc}}_{H,T-1}$ is Small}
       \label{fig:IntExpFOCInvPesReaOpt45GapPlot}
     \end{figure}
   \end{comment}
@@ -443,13 +443,13 @@ Designating $\Aprx{\Hi{\cFunc}}_{\prd-1}$ as the approximated consumption rule o
 
   But for \textit{all} $\mNrm_{\prd}$,
   \begin{equation*}\begin{gathered}\begin{aligned}
-        \bar{\vFunc}_{\prd}(\mNrm)  & = \uFunc(\bar{\cNrm}_{\prd}(\mNrm))+ \bar{\vEnd}(\mNrm-\bar{\cNrm}_{\prd}(\mNrm)),
+        \bar{\vFunc}_{\prd}(\mNrm)  & = \uFunc(\bar{\cNrm}_{\prd}(\mNrm))+ \bar{\EndPrd}(\mNrm-\bar{\cNrm}_{\prd}(\mNrm)),
       \end{aligned}\end{gathered}\end{equation*}
   and we assume that for the consumer below the cusp point consumption is given by $\MPCmax \aboveMin \mNrm_{\prd}$ so for $\mNrm_{\prd}< \mtCusp$
   \begin{equation*}\begin{gathered}\begin{aligned}
-        \bar{\vFunc}_{\prd}(\mNrm)  & = \uFunc( \MPCmax_{\prd} \aboveMin \mNrm)+ \bar{\vEnd}((1-\MPCmax_{\prd})\aboveMin \mNrm),
+        \bar{\vFunc}_{\prd}(\mNrm)  & = \uFunc( \MPCmax_{\prd} \aboveMin \mNrm)+ \bar{\EndPrd}((1-\MPCmax_{\prd})\aboveMin \mNrm),
       \end{aligned}\end{gathered}\end{equation*}
-  which is easy to compute because $\bar{\vEnd}(\aNrm_{\prd}) = \DiscFac \bar{\vFunc}_{\prd+1}(\aNrm_{\prd}\RNrm+1)$ where $\bar{\vFunc}_{\prd}$ is as defined above because a consumer who ends the current period with assets exceeding the lower bound will not expect to be constrained next period.  (Recall again that we are merely constructing an object that is guaranteed to be an \textit{upper bound} for the value that the `realist' consumer will experience.)  At the gridpoints defined by the solution of the consumption problem can then construct
+  which is easy to compute because $\bar{\EndPrd}(\aNrm_{\prd}) = \DiscFac \bar{\vFunc}_{\prd+1}(\aNrm_{\prd}\RNrmByG+1)$ where $\bar{\vFunc}_{\prd}$ is as defined above because a consumer who ends the current period with assets exceeding the lower bound will not expect to be constrained next period.  (Recall again that we are merely constructing an object that is guaranteed to be an \textit{upper bound} for the value that the `realist' consumer will experience.)  At the gridpoints defined by the solution of the consumption problem can then construct
   \begin{equation*}\begin{gathered}\begin{aligned}
         \bar{\vInv}_{\prd}(\mNrm)  & = ((1-\CRRA)\bar{\vFunc}_{\prd}(\mNrm))^{1/(1-\CRRA)}
       \end{aligned}\end{gathered}\end{equation*}
@@ -529,7 +529,7 @@ zero.\footnote{The word artificial is chosen only because of its clarity in dist
       \vFunc_{\prd-1}(m_{\prd-1})  & = \max_{\cNrm_{\prd-1}} ~~ \uFunc(c_{\prd-1}) + \Ex_{\prd-1} [\DiscFac \PermGroFacAdjV{\vFunc}_{\cntn(T)}(m_{\prd})] \label{eq:ConstrArt}
       \\ & \mbox{s.t.}  \nonumber
       \\ a_{\prd-1}  & = m_{\prd-1} - c_{\prd-1}
-      \\ m_{\prd}  & = \RNrm_{\prd} a_{\prd-1} + \tranShkEmp_{\prd}
+      \\ m_{\prd}  & = \RNrmByG_{\prd} a_{\prd-1} + \tranShkEmp_{\prd}
       \\ a_{\prd-1} & \geq 0 .
     \end{aligned}\end{gathered}\end{equation*}
 
@@ -624,7 +624,7 @@ simplifies things a bit because now we can always consider an
 Recall now equations~(\ref{eq:vEndPrimeTm1}) and (\ref{eq:upEqbetaOp}):
 \begin{equation*}\begin{gathered}\begin{aligned}
       \vPEndStg(a_{\prd})  & = \Ex_{\BegStg}[\DiscFac \Rfree \PermGroFac_{\prd+1}^{-\CRRA}
-      \uFunc^{c}(\cFunc_{\prd+1}(\RNrm_{\prd+1} a_{\prd}+{\tranShkEmp}_{\prd+1}))]
+      \uFunc^{c}(\cFunc_{\prd+1}(\RNrmByG_{\prd+1} a_{\prd}+{\tranShkEmp}_{\prd+1}))]
       \\\uFunc^{c}(c_{\prd})   & = \vEndStg^{a}(m_{\prd}-c_{\prd}).
     \end{aligned}\end{gathered}\end{equation*}
 Assuming that the problem has been solved up to period $t+1$ (and thus assuming that we have an approximated $\Aprx{\cFunc}_{\prd+1}(m_{\prd+1})$), our solution method essentially involves using these two equations in succession to work back progressively from period $\trmT-1$ to the beginning of life.  Stated generally, the method is as follows.  (Here, we use the original, rather than the ``refined,'' method for constructing consumption functions; the generalization of the algorithm below to use the refined method presents no difficulties.)
@@ -632,13 +632,13 @@ Assuming that the problem has been solved up to period $t+1$ (and thus assuming 
 \begin{enumerate}
 
 \item For the grid of values $a_{t,i}$ in \texttt{aVec\_eee}, numerically calculate the values
-  of $\cFunc_{\Hi{t}}(a_{t,i})$ and $\cFunc_{\Hi{t}}^{a}(a_{t,i})$,
+  of $\cFunc_{\Max{t}}(a_{t,i})$ and $\cFunc_{\Max{t}}^{a}(a_{t,i})$,
     \begin{equation}\begin{gathered}\begin{aligned}
-          \cFunc_{\Hi{t},i}  & = \left(\vEndStg^{a}(a_{t,i})\right)^{-1/\CRRA},
-          \\                             & = \left(\DiscFac \Ex_{\BegStg} \left[\Rfree \PermGroFac_{\prd+1}^{-\CRRA}(\grave{\cFunc}_{\prd+1}(\RNrm_{\prd+1} a_{t,i} +      {\tranShkEmp}_{\prd+1}))^{-\CRRA}\right]\right)^{-1/\CRRA}, \label{eq:vEndeq}
-          \MPCMatch{\\        \cFunc^{a}_{\Hi{t},i}  & = -(1/\CRRA)\left(\vEndStg^{a}(a_{t,i})\right)^{-1-1/\CRRA} \vEndStg^{a{a}}(\aNrm_{t,i}),}{}
+          \cFunc_{\Max{t},i}  & = \left(\vEndStg^{a}(a_{t,i})\right)^{-1/\CRRA},
+          \\                             & = \left(\DiscFac \Ex_{\BegStg} \left[\Rfree \PermGroFac_{\prd+1}^{-\CRRA}(\grave{\cFunc}_{\prd+1}(\RNrmByG_{\prd+1} a_{t,i} +      {\tranShkEmp}_{\prd+1}))^{-\CRRA}\right]\right)^{-1/\CRRA}, \label{eq:vEndeq}
+          \MPCMatch{\\        \cFunc^{a}_{\Max{t},i}  & = -(1/\CRRA)\left(\vEndStg^{a}(a_{t,i})\right)^{-1-1/\CRRA} \vEndStg^{a{a}}(\aNrm_{t,i}),}{}
         \end{aligned}\end{gathered}\end{equation}
-generating vectors of values $\vctr{\cFunc}_{\prd}$\MPCMatch{ and $\vctr{\cFunc}^{a}_{\Hi{t}}$.}{.}
+generating vectors of values $\vctr{\cFunc}_{\prd}$\MPCMatch{ and $\vctr{\cFunc}^{a}_{\Max{t}}$.}{.}
 
 \item Construct a corresponding vector of values of $\vctr{m}_{\prd}=\vctr{\cNrm}_{\prd}+\vctr{\aNrm}_{\prd}$\MPCMatch{; similarly construct a corresponding list of MPC's $\vctr{\MPC}_{\prd}$ using equation \eqref{eq:MPCfromMPTHC}.}{.}
 
@@ -655,5 +655,5 @@ and related equations.  With this consumption
 rule in hand, we can continue the backwards recursion to period $t-1$
 and so on back to the beginning of life.
 
-Note that this loop does not contain an item for constructing $\hat{\vFunc}_{\prd}^{a}(m_{\prd})$. This is because with $\Aprx{\Hi{\cFunc}}_{\prd}(m_{\prd})$ in hand, we simply \textit{define} $\hat{\vFunc}^{m}_{\prd}(m_{\prd}) = \uFunc^{c}(\Aprx{\Hi{\cFunc}}_{\prd}(m_{\prd}))$ so there is no need to construct interpolating approximations - the function arises `free' (or nearly so) from our constructed $\Aprx{\Hi{\cFunc}}_{\prd}(m_{\prd})$ via the usual envelope result (cf.\ \eqref{eq:envelope}).
+Note that this loop does not contain an item for constructing $\hat{\vFunc}_{\prd}^{a}(m_{\prd})$. This is because with $\Aprx{\Max{\cFunc}}_{\prd}(m_{\prd})$ in hand, we simply \textit{define} $\hat{\vFunc}^{m}_{\prd}(m_{\prd}) = \uFunc^{c}(\Aprx{\Max{\cFunc}}_{\prd}(m_{\prd}))$ so there is no need to construct interpolating approximations - the function arises `free' (or nearly so) from our constructed $\Aprx{\Max{\cFunc}}_{\prd}(m_{\prd})$ via the usual envelope result (cf.\ \eqref{eq:envelope}).
 

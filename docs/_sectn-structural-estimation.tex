@@ -1,4 +1,4 @@
-\input{.resources/texlive/add_search_paths}\documentclass[SolvingMicroDSOPs]{subfiles}
+\input{.resources/add-tex-search-paths}\documentclass[SolvingMicroDSOPs]{subfiles}
 \input{subfile-start}
 
 
@@ -134,14 +134,14 @@ As explained in section \ref{sec:normalization}, it is convenient to work with t
         \Ex_{\prd}[(\permShk_{\prd+1}\PermGroFac_{\prd+1})^{1-\CRRA}\vFunc_{\prd+1}(m_{\prd+1})]   \\
         & \text{s.t.}   \nonumber \\
         a_{\prd}    & = m_{\prd}-c_{\prd} \nonumber
-        \\      m_{\prd+1}  & = a_{\prd}\underbrace{\left(\frac{\Rfree}{\permShk_{\prd+1}\PermGroFac_{\prd+1}}\right)}_{\equiv \RNrm_{\prd+1}}+ ~\tranShkEmp_{\prd+1}
+        \\      m_{\prd+1}  & = a_{\prd}\underbrace{\left(\frac{\Rfree}{\permShk_{\prd+1}\PermGroFac_{\prd+1}}\right)}_{\equiv \RNrmByG_{\prd+1}}+ ~\tranShkEmp_{\prd+1}
       \end{aligned}\end{gathered}\end{equation*}
 \end{verbatimwrite} 
 \input{./Equations/LifeCycleMaxNormed.tex}\unskip
 with the first order condition:
 \begin{verbatimwrite}{./Equations/FOCLifeCycle}
   \begin{equation}\begin{gathered}\begin{aligned}
-        \uFunc^{c}(c_{\prd}) & = \beth\Alive_{\prd+1}\hat{\DiscFac}_{\prd+1}\Rfree \Ex_{\prd}\left[\uFunc^{c}\left(\permShk_{\prd+1}\PermGroFac_{\prd+1}\cFunc_{\prd+1}\left(a_{\prd}\RNrm_{\prd+1}+\tranShkEmp_{\prd+1}\right)\right)\right]\label{eq:FOCLifeCycle}
+        \uFunc^{c}(c_{\prd}) & = \beth\Alive_{\prd+1}\hat{\DiscFac}_{\prd+1}\Rfree \Ex_{\prd}\left[\uFunc^{c}\left(\permShk_{\prd+1}\PermGroFac_{\prd+1}\cFunc_{\prd+1}\left(a_{\prd}\RNrmByG_{\prd+1}+\tranShkEmp_{\prd+1}\right)\right)\right]\label{eq:FOCLifeCycle}
         .
       \end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}

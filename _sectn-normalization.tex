@@ -1,4 +1,4 @@
-\input{.resources/texlive/add_search_paths}\documentclass[SolvingMicroDSOPs]{subfiles}
+\input{.resources/add-tex-search-paths}\documentclass[SolvingMicroDSOPs]{subfiles}
 \input{subfile-start}
 
 \begin{document}
@@ -9,11 +9,11 @@ The single most powerful method for speeding the solution of such models is to r
 
 In the last {\interval} of life $\trmT$, there is no future value, $\vLvl_{\trmT+1} = 0$, so the optimal plan is to consume everything:
 \begin{equation}\begin{gathered}\begin{aligned}
-      \vLvl_{\trmT}(\mLvl_{\trmT},\pLvl_{\trmT})  & = \frac{\mLvl_{\trmT}^{1-\CRRA}}{1-\CRRA}. \label{eq:levelTm1}
+      \vFuncLvl_{\trmT}(\mLvl_{\trmT},\pLvl_{\trmT})  & = \frac{\mLvl_{\trmT}^{1-\CRRA}}{1-\CRRA}. \label{eq:levelTm1}
     \end{aligned}\end{gathered}\end{equation}
 Now define nonbold variables as the bold variable divided by the level of permanent income in the same period, so that, for example, $\mNrm_{\trmT}=\mLvl_{\trmT}/\pLvl_{\trmT}$; and define $\vFunc_{\trmT}(\mNrm_{\trmT}) = \uFunc(\mNrm_{\trmT})$.\footnote{Nonbold value is bold value divided by $\pLvl^{1-\CRRA}$ rather than $\pLvl$.}  For our CRRA utility function, $\uFunc(xy)=x^{1-\CRRA}\uFunc(y)$, so (\ref{eq:levelTm1}) can be rewritten as
 \begin{equation}\begin{gathered}\begin{aligned}
-      \vLvl_{\trmT}(\mLvl_{\trmT},\pLvl_{\trmT}) & = \pLvl_{\trmT}^{1-\CRRA}\frac{{\mNrm}_{\trmT}^{1-\CRRA}}{1-\CRRA}                       \\
+      \vFuncLvl_{\trmT}(\mLvl_{\trmT},\pLvl_{\trmT}) & = \pLvl_{\trmT}^{1-\CRRA}\frac{\mNrm_{\trmT}^{1-\CRRA}}{1-\CRRA}                       \\
 %                                                & = (\pLvl_{\trmT-1}\PermGroFac_{\trmT})^{1-\CRRA}\frac{{\mNrm}_{\trmT}^{1-\CRRA}}{1-\CRRA} \\
                                                 &= \pLvl_{\trmT-1}^{1-\CRRA}\PermGroFac_{\trmT}^{1-\CRRA}\vFunc_{\trmT}(\mNrm_{\trmT}). \label{eq:vT}
     \end{aligned}\end{gathered}\end{equation}
@@ -21,30 +21,30 @@ Now define nonbold variables as the bold variable divided by the level of perman
 Now define a new optimization problem:
 \begin{verbatimwrite}{./Equations/vNormed.tex}
   \begin{equation}\begin{gathered}\begin{aligned}
-        \vFunc_{\prd}(\mNrm_{\prd}) & = \max_{{\cNrm}_{\prd}} ~~ \uFunc(\cNrm_{\prd})+{\DiscFac}\Ex_{\prd}[ \PermGroFac_{\prd+1}^{1-\CRRA}\vFunc_{\prd+1}(\mNrm_{\prd+1})] \label{eq:vNormed}                   \\
+        \vFunc_{\prd}(\mNrm_{\prd}) & = \max_{{\cNrm}_{\prd}} ~~ \uFunc(\cNrm_{\prd})+\DiscFac \Ex_{\prd}[ \PermGroFac_{\prd+1}^{1-\CRRA}\vFunc_{\prd+1}(\mNrm_{\prd+1})] \label{eq:vNormed}                   \\
                                          & \text{s.t.}                                                                                 \\
         \aNrm_{\prd}                       & = \mNrm_{\prd}-\cNrm_{\prd}                                                                     \\
         \kNrm_{\prd+1}                     & = \aNrm_{\prd}                                                                                \\
-        \bNrm_{\prd+1}                     & = \underbrace{\left(\Rfree/\PermGroFac_{\prd+1}\right)}_{\equiv \RNrm_{\prd+1}}\kNrm_{\prd+1} \\
+        \bNrm_{\prd+1}                     & = \underbrace{\left(\Rfree/\PermGroFac_{\prd+1}\right)}_{\equiv \RNrmByG_{\prd+1}}\kNrm_{\prd+1} \\
         \mNrm_{t+1}                        & = \bNrm_{t+1}+\tranShkEmp_{t+1},
       \end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}
 \input{./Equations/vNormed.tex}\unskip
-where division by $\PermGroFac$ in second-to-last equation yields a normalized return factor $\RNrm$ which is the consequence of the fact that we have divided $\prd+1$ level variables by $\pLvl_{\prd+1}=\PermGroFac_{\prd+1}\pLvl_{\prd}$.
+where division by $\PermGroFac$ in second-to-last equation yields a normalized return factor $\RNrmByG$ which is the consequence of the fact that we have divided $\prd+1$ level variables by $\pLvl_{\prd+1}=\PermGroFac_{\prd+1}\pLvl_{\prd}$.
 
 \ifpseudo{ % pseudocode goes here
 \lstinputlisting{equiprobable-make.py}\nopagebreak
   }{}
   
-Then it is easy to see that for $\prd=\trmT-1$, we can write boldface (nonnormalized) $\vLvl$ as a function of $\vFunc$ (normalized value) and permanent income:
+Then it is easy to see that for $\prd=\trmT-1$, we can write boldface (nonnormalized) $\vFuncLvl$ as a function of $\vFunc$ (normalized value) and permanent income:
 \begin{equation}\begin{gathered}\begin{aligned}
-      \vLvl_{\prd}(\mLvl_{\prd},\pLvl_{\prd}) & =  \pLvl_{\prd}^{1-\CRRA}\vFunc_{\prdt}(\mNrm_{\prdt}), \label{eq:vLvlFromvFunc}
+      \vFuncLvl_{\prd}(\mLvl_{\prd},\pLvl_{\prd}) & =  \pLvl_{\prd}^{1-\CRRA}\vFunc_{\prdt}(\mNrm_{\prdt}), \label{eq:vLvlFromvFunc}
     \end{aligned}\end{gathered}\end{equation}
 and so on back to all earlier periods.  Hence, if we solve the problem \eqref{eq:vNormed} which has only a single state variable $\mNrm_{\prd}$, we can obtain the levels of the value function from \eqref{eq:vLvlFromvFunc}, and of consumption and all other variables from the corresponding permanent-income-normalized solution objects by multiplying each by $\pLvl_{\prd}$, e.g.\
 \begin{equation*}\begin{gathered}\begin{aligned}
   \cFunc_{\prd}(\mLvl_{\prd},\pLvl_{\prd})=\pLvl_{\prd}\cFunc_{\prd}(\overbrace{\mLvl_{\prd}/\pLvl_{\prd}}^{\mNrm_{\prd}}).
     \end{aligned}\end{gathered}\end{equation*}
-%(or, for the value function, $\vLvl _{\prd}(\mLvl_{\prd},\pLvl_{\prd}) = \pLvl_{\prd}^{1-\CRRA}\vFunc_{\prd}(\mNrm_{\prd}))$.
+%(or, for the value function, $\vFuncLvl _{\prd}(\mLvl_{\prd},\pLvl_{\prd}) = \pLvl_{\prd}^{1-\CRRA}\vFunc_{\prd}(\mNrm_{\prd}))$.
 
 We have thus reduced the problem from two continuous state variables to one (and thereby enormously simplified its solution).
 

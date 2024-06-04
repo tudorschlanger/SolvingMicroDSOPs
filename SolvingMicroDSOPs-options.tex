@@ -38,15 +38,20 @@
 \provideboolean{MyNotes}\setboolean{MyNotes}{true}
 %\setboolean{MyNotes}{false} 
 
+% realcode
+\provideboolean{realcode}\setboolean{realcode}{false}
+%\setboolean{realcode}{false}
+\newcommand{\ifcode}{\ifthenelse{\boolean{realcode}}}
+
 % pseudocode
-\provideboolean{pseudocode}\setboolean{pseudocode}{true}
+\provideboolean{pseudocode}\setboolean{pseudocode}{false}
 %\setboolean{pseudocode}{false}
 \newcommand{\ifpseudo}{\ifthenelse{\boolean{pseudocode}}}
 
 % margin notes
 \provideboolean{Margnote}\setboolean{Margnote}{true}
 % \setboolean{Margnote}{false}
-\newcommand{\ifMarg}{\ifthenelse{\Margnote}}
+\newcommand{\ifMarg}{\ifthenelse{\boolean{Margnote}}}
 
 % Show things that need fixing
 \provideboolean{ToFix}\setboolean{ToFix}{true}

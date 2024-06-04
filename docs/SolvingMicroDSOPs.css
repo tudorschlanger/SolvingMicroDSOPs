@@ -9,22 +9,23 @@
 .cmmi-10{font-size:83%;font-style: italic;}
 .cmsy-7{font-size:58%;}
 .cmsy-10{font-size:83%;}
-.ecrm-2074{font-size:166%;}
-.ecbx-2074{font-size:166%; font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecbx-2074{ font-weight: bold;}
-.ecrm-0600{font-size:50%;}
+.ecrm-1728{font-size:141%;}
 .ecrm-1440{font-size:116%;}
+.ecrm-2074{font-size:166%;}
+.ecbx-1728{font-size:141%; font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecbx-1728{ font-weight: bold;}
+.ecrm-0600{font-size:50%;}
 .msbm-10{font-size:83%;}
 .ecrm-1095{font-size:83%;}
 .ecrm-1000{font-size:83%;}
@@ -100,6 +101,10 @@
 .cmmi-6{font-size:50%;font-style: italic;}
 .cmsy-8{font-size:66%;}
 .cmsy-6{font-size:50%;}
+.cmti-12{ font-style: italic;}
+.cmti-8{font-size:66%; font-style: italic;}
+.cmss-12{  font-family: sans-serif;}
+.cmss-12{  font-family: sans-serif;}
 .cmbx-12{ font-weight: bold;}
 .cmbx-12{ font-weight: bold;}
 .cmbx-12{ font-weight: bold;}
@@ -112,27 +117,10 @@
 .cmbx-6{ font-weight: bold;}
 .cmbx-6{ font-weight: bold;}
 .cmbx-6{ font-weight: bold;}
-.cmss-12{  font-family: sans-serif;}
-.cmss-12{  font-family: sans-serif;}
-.cmbx-10{font-size:83%; font-weight: bold;}
-.cmbx-10{ font-weight: bold;}
-.cmbx-10{ font-weight: bold;}
-.cmbx-10{ font-weight: bold;}
 .cmss-10{font-size:83%;  font-family: sans-serif;}
 .cmss-10{  font-family: sans-serif;}
-.ecit-1000{font-size:83%; font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
-.ecit-1000{ font-style: italic; font-family: monospace,monospace;}
+.cmti-10{font-size:83%; font-style: italic;}
+.eusm-10x-x-80{font-size:66%;}
 .cmtt-12{font-family: monospace,monospace;}
 .cmtt-12{font-family: monospace,monospace;}
 .cmtt-12{font-family: monospace,monospace;}
@@ -143,6 +131,11 @@
 .cmtt-10{font-family: monospace,monospace;}
 .cmtt-10{font-family: monospace,monospace;}
 .eufm-10{font-size:83%;}
+.eufm-10x-x-80{font-size:66%;}
+.cmbx-10{font-size:83%; font-weight: bold;}
+.cmbx-10{ font-weight: bold;}
+.cmbx-10{ font-weight: bold;}
+.cmbx-10{ font-weight: bold;}
 .small-caps{font-variant: small-caps; }
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
@@ -334,6 +327,7 @@ pre.lstlisting{font-family: monospace,monospace; white-space: pre-wrap; margin-t
 pre.lstinputlisting{ font-family: monospace,monospace; white-space: pre-wrap; }
 .lstinputlisting .label{margin-right:0.5em;}
 .rotatebox{display: inline-block;}
+.marginnote{float:right;clear:right;margin-right:-50%;width:45%;font-size:80%;text-indent:0em;}
 div.caption {text-align:left;font-size:83%;text-indent:0em; margin-left:2em; margin-right:2em; }
 div.caption span.id{font-variant: small-caps; white-space: nowrap; }
 .figure div.caption{text-align: center;}

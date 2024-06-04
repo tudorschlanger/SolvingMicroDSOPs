@@ -1,4 +1,4 @@
-\input{.resources/texlive/add_search_paths}\documentclass[SolvingMicroDSOPs]{subfiles}
+\input{.resources/add-tex-search-paths}\documentclass[SolvingMicroDSOPs]{subfiles}
 \input{subfile-start}
 
 \begin{document}
@@ -17,23 +17,25 @@ If, as in section \ref{sec:the-problem}, we hard-wire into the solution code for
 But one of the cardinal insights of Bellman's (1957, ``Dynamic Programming'') original work is that \emph{everything that matters} for the solution to the current problem is encoded in a `continuation-value function.' %that incorporates \texttt{everything about the future} that is important to solution of the present stage.  %This point is important for a number of reasons, but here we will focus on one problem of ignoring it. Actual solution of the maximization problem as specified in \eqref{eq:vNormed} requires the current agent to have knowledge not only of the successor value function, but also of other aspects of the problem like the distributions of the future period's stochastic shocks. So any solution to the problem that directly uses in \eqref{eq:vNormed} will need to hard-wire into itself the specifics of the successor problem.
 Using Bellman's insight, we describe here a framework for isolating the {\stg} problems within a {\interval} from each other, and the {\interval} from its successors in any future {\interval}; the advantage of this is that the isolated {\stg} and {\interval} problems will then be `modular': We can solve them in any order \textit{without changing any code} (only transitions need to be rewired). After considering the {\stg}-order $[\ell,\cFunc,\Shr]$, the modeler can costlessly reorder the {\stg}s to consider, say, the order $[\ell,\Shr,\cFunc]$.\footnote{As long as the beginning-of-{\stg} and end-of-{\stg} value functions for the {\stg}s all depend on the same state variables; see the discussion in section \ref{sec:multiple-control-variables}.}
 
-\subsection{\Moves}
+\hypertarget{moves}{}
+\subsection{\Moves}\label{subsec:steps}
 
 The key is to distinguish, within each {\stg}'s Bellman problem, three {\moves}:
 
 \begin{enumerate}
 \item \textbf{\Arrival}: Incoming state variables (e.g., $\kNrm$) are known, but any shocks associated with the period have not been realized and decision(s) have not yet been made
-\item \textbf{\Decision}: All exogenous variables (like income shocks, rate of return shocks, and predictable income growth $\PermGroFac$) have been realized (so that, e.g., $\mNrm$'s value is known) and the agent solves the optimization problem
+\item \textbf{\Decision}: The agent solves the decision problem for the period
 \item \textbf{\Continuation}: After all decisions have been made, their consequences are measured by evaluation of the continuing-value function at the values of the `outgoing' state variables (sometimes called `post-state' variables).
 \end{enumerate}
 
-%In the standard treatment in the literature, the (implicit) default assumption is that the {\move} where the agent is solving a decision problem is the unique {\move} at which the problem is defined.  This is what was done above, when (for example) in \eqref{eq:vNormed} we related the value $\vFunc$ of the current decision to the expectation of the future value $\vFunc_{\prd+1}$.  Here, instead, we want to encapsulate the current {\stg}'s problem as a standalone object, which is solved by taking as given an exogenously-provided continuation-value function (in our case, $\vEndStg(a)$).
+Notice that this specification is silent about when the stochastic shocks are realized; this may occur either before or after the decision stage.  In the consumption problem we are studying, the natural choice is to assume that the shocks have been realized before the decision is made so that the consumer knows what their income has been for the period.  In the portfolio problem we will examine below, the portfolio share decision must be made before the stochastic returns are realized.
+% In the standard treatment in the literature, the (implicit) default assumption is that the {\move} where the agent is solving a decision problem is the unique {\move} at which the problem is defined.  This is what was done above, when (for example) in \eqref{eq:vNormed} we related the value $\vFunc$ of the current decision to the expectation of the future value $\vFunc_{\prd+1}$.  Here, instead, we want to encapsulate the current {\stg}'s problem as a standalone object, which is solved by taking as given an exogenously-provided continuation-value function (in our case, $\vEndStg(a)$).
 
 When we want to refer to a specific {\move} in the {\stg} we will do so by using an indicator which identifies that {\move}.  Here we use the consumption {\stg} problem described above to exemplify the usage:
 \begin{center}
 %  \mbox{%
     \begin{tabular}{r|c|c|l|l}
-      {\Move}         & Indicator               & State          & Usage                       & Explanation                                \\ \hline
+      {\Move}         & Indicator               & State          & Usage                       & Explanation    \\ \hline
       {\Arrival}      & $ \arvl $ & $\kNrm$ & $\vBegStg(\kNrm)$ & value at entry to {\stg} (before shocks) \\
       {\Decision}(s)  & (blank)            & $\mNrm$ & $\vMidStg(\mNrm)$ & value of {\stg}-decision (after shocks)       \\
       {\Continuation} & $ \cntn $ & $\aNrm$ & $\vEndStg(\aNrm)$ & value at exit (after decision) \\ \hline
@@ -41,35 +43,38 @@ When we want to refer to a specific {\move} in the {\stg} we will do so by using
 %  }
   \end{center}
 
-  Notice that the value functions at different {\move}s of the {\stg} have distinct state variables.  Only $\kNrm$ is known at the beginning of the {\stg}, and other variables take on their values with equations like $b = k \RNrm$ and $\mNrm = \bNrm+\tranShkEmp.$  We will refer to such within-the-{\stg} creation of variables as `{\evltns}.'  So, the consumption stage problem has two {\evltns}: from $\kNrm$ to $\mNrm$ and from $\mNrm$ to $\aNrm$.
+  Notice that the value functions at different {\move}s of the {\stg} have distinct state variables.  Only $\kNrm$ is known at the beginning of the {\stg}, and other variables take on their values with equations like $b = k \RNrmByG$ and $\mNrm = \bNrm+\tranShkEmp.$  We will refer to such within-the-{\stg} creation of variables as `{\evltns}.'  So, the consumption stage problem has two {\evltns}: from $\kNrm$ to $\mNrm$ and from $\mNrm$ to $\aNrm$.
 
 \ifpseudo{
 \lstinputlisting{./Code/Python/snippets/pseudo-model-setup-prdT.py}\nopagebreak
 }{}
 
-\subsection{\Trnsns}
+\hypertarget{transitions}{}
+\subsection{\Trnsns}\label{subsec:transitions}
 
-  In the backward-induction world of Bellman solutions, to solve the problem of a particular {\interval} we must start with an end-of-{\interval} (continuation) value function, which we designate by explicitly including the {\interval} indicator in the subscript (the $:=$ symbol denotes that the object on the right hand side is assigned to the object on the left hand side):
+In the backward-induction world of Bellman solutions, to solve the problem of a particular {\interval} we must start with an end-of-{\interval} (continuation) value function, which we designate by explicitly including the {\interval} indicator in the subscript (the $:=$ symbol denotes that the object on the right hand side is assigned to the object on the left hand side; the left object `gets' the right object):\ifMarg{\tiny needs discussion: It's made at the time of execution of Matt's link structure; but is it a pointer, a deepcopy, an algorithm, or what?}{}\normalsize
   \begin{equation}\begin{gathered}\begin{aligned}
-        \vEndPrd(\aNrm) & \leftassign \DiscFac \vBegPrdNxt(\overbrace{\aNrm}^{=\kNrm}), \label{eq:trns-single-prd}
+        \vEndPrd(\aNrm) & \leftassign \DiscFac \vBegPrdNxt(\overbrace{\aNrm}^{=\kNrm}), \label{eq:trns-single-prd}  %
   \end{aligned}\end{gathered}\end{equation}
 and we are not done solving the problem of {\interval} {\prd} until we have constructed a beginning-of-{\interval} value function $\vBegPrd(\kNrm)$.
 
 Similarly, in order to solve the problem of any {\stg}, we must endow it with an end-of-{\stg} continuation-value function.  For the last {\stg} in a {\interval}, the end-of-{\stg} function is taken to be end-of-{\interval} value function; in our case where there is only one {\stg}, this can be written cleanly as:
-  \begin{equation}\begin{gathered}\begin{aligned}
-        \vEndStg(\aNrm) \leftassign \vEndPrd(\aNrm).
+  \begin{equation}\begin{gathered}\begin{aligned} \label{eq:last-stg-v-is-end-prd-v} 
+        \vEndStg(\aNrm) \leftassign \vEndPrd(\aNrm). 
       \end{aligned}\end{gathered}\end{equation}
+
+\Fix{\marginpar{\tiny pseudocode? \normalsize}}{}\normalsize   
+  
 \subsection{The Decision Problem in the New Notation}\label{subsec:decision-problem}\hypertarget{decision-problem}{}
 
 From `inside' the decision stage, the {\Decision} problem can now be written much more cleanly than in equation \eqref{eq:vNormed}:
-\begin{verbatimwrite}{./Equations/vMid}
+\begin{verbatimwrite}{./Equations/vMidStgCNrm}
   \begin{equation}\begin{gathered}\begin{aligned}
-        \vFunc(\mNrm) & = \max_{\cNrm}~ \uFunc(\cNrm) + \vFunc_{_\cntn}(\overbrace{\mNrm-\cFunc}^{\aNrm}) \label{eq:vMid}
+        \vFunc(\mNrm) & = \max_{\cNrm}~ \uFunc(\cNrm) + \vFunc_{_\cntn}(\overbrace{\mNrm-\cFunc}^{=\aNrm}) \label{eq:vMidStgCNrm}
       \end{aligned}\end{gathered}\end{equation}
 \end{verbatimwrite}
-\input{./Equations/vMid}\unskip
+\input{./Equations/vMidStgCNrm}\unskip
 
-%We are now ready to move to substance.
 
 \begin{comment} 
 
@@ -79,9 +84,14 @@ From `inside' the decision stage, the {\Decision} problem can now be written muc
 
   \subsubsection{Useful auxilliary files}
 
-  In this exercise, two primary user-defined modules are frequently imported and utilized. The first is the \texttt{gothic\_class} module, which contains functions describing the end-of-period value functions found in equations \eqref{eq:vBegStg} - \eqref{eq:vEnd} (and the corresponding first and second derivatives). %The advantage of defining functions in the code which decompose the consumer's optimal behavior in a given period will become evident in section \ref{subsec:transformation}
+  In this exercise, two primary user-defined modules are frequently imported and utilized. The first is the \texttt{gothic\_class} module, which contains functions describing the end-of-period value functions found in equations \eqref{eq:vBegStg} - \eqref{eq:EndPrd} (and the corresponding first and second derivatives). %The advantage of defining functions in the code which decompose the consumer's optimal behavior in a given period will become evident in section \ref{subsec:transformation}
 
   The \texttt{resources} module is also used repeatedly throughout the notebook. This file has three primary objectives: (i) providing functions that discretize the continuous distributions from the theoretical model that describe the uncertainty a consumer faces, (ii) defining the utility function over consumption under a number of specifications, and (iii) enhancing the grid of end-of-period assets for which functions (such as those from the \texttt{gothic\_class} module) will be defined. These objectives will be discussed in greater detail and with respect to the numerical methods used to the problem in subsequent sections of this document.
 
 \end{comment}
 \end{document}
+
+% Local Variables:
+% eval: (setq prettify-symbols-unprettify-at-point 'right-edge)
+% coding: utf-8
+% End:

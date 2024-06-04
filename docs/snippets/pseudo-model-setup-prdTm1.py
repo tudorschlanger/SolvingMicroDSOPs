@@ -1,29 +1,48 @@
-# construct period T-1 contents for model that has period T already
-# MNW, SB, AL to substitute their ideas here
-# Using : as the python prompt
+>>> prdT=len(mdl2prd.sequential) - 1 # (because transit is last)
 
-# Now let's build what is in the interval Tm1
+>>> mdl2prd.sequential[prdT] # inspect last period 
 
->>> prdTm1=0
->>> prdT=-1
+'(whatever was constructed in prdT)'
 
-# add_interval should construct mdl2prd.solution[Tm1]
->>> mdl2prd.add_interval()
+# Now let's build what is in T-1
+## Assume there is a yml file for the transition
 
-# it should set  mdlprd2.solution[Tm1].interval[-1] 
+# prepend transition
+>>> mdl2prd.sequential.add_transit('transit_consumption_portfolio.yml')
 
->>> mdl2prd.solution[prdT].interval.add_vEndPrd(
-    parse_file_model='vEndTerm_plato.yml' # Platonic description 
-    parse_file_setup='mdl2prd_config.yml' # like, simulation_method=monte_carlo
+# a <--> k  (a maps to k)
+# vBeg for transit should be vBeg for successor
+# mdl2prd.sequential[0].vBeg = mdl2prd.sequential[1].vBeg 
+
+# Begin constructing period T-1
+
+>>> mdl2prd.sequential
+
+[
+    transit_consumption_portfolio,
+    interval_T # = [vBeg, [ Shr, cNrm ], vEnd],
+    transit_TtoEnd
+    ]
+
+>>> mdl2prd.sequential.add_interval(
+    parse_model='consumption_portfolio.yml',
+    interval_name='shr_cNrm_T'
     )
+>>> 
 
-# probably we need to put the stages in a sublist ...
->>> mdl2prd.solution[prdT].interval.make_empty_stage_list()
+>>> mdl2prd.sequential
+[
+    [vEnd],
+    transit, # state variable transitions
+    [vBeg,[Shr,c],vEnd] # From already-solved prdT
+]
+
+>>> mdl2prd.sequential[prdT].interval.make_empty_stage_list()
 
 # The last stage is added first
-## Period T is a special case in which no solving is necessary since we know the solution is c=m
+## Period T is a special case in which no solving is necessary since we know the sequential is c=m
 
->>> mdl2prd.solution[prdT].interval.append_stage(
+>>> mdl2prd.sequential[prdT].interval.append_stage(
     stage_name='c',
     parse_file_model='consume_all_m.yml',
     parse_file_stage='consume_all_m_stagefile.yml'
@@ -35,13 +54,13 @@
 ### - prepend to the list of stages an empty earlier stage
 ### - set stg[new_stg].vEndStg = stg[successor_stg].vBegStg
 
->>> mdl2prd.solution[prdT].interval.append_stage(
+>>> mdl2prd.sequential[prdT].interval.append_stage(
     stage_name='Shr',
     parse_file_model='portfolio_shr_solve.yml',
     parse_file_model='portfolio_shr_stage.yml' # again not sure if needed
     )
 
 # We are finished adding stages; finish by adding vBeg
->>> mdl2prd.solution[prdT].interval.add_vBeg() # 
->>> mdl2prd.solution[prdT].interval.solution
+>>> mdl2prd.sequential[prdT].interval.add_vBeg() # 
+>>> mdl2prd.sequential[prdT].interval.sequential
     [vBeg, [ Shr, c ], vEnd]

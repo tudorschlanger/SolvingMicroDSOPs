@@ -1,14 +1,22 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax)
+\input{.resources/add-tex-search-paths} % allow latex to find custom stuff
 %\input{./.econtexRoot}
 \documentclass{beamer}
 \newcommand{\texname}{SolvingMicroDSOPs-Slides}
+\usepackage{local-macros}      % defns for this project
+\usepackage{econark}           % econark defns
+\usepackage{llorracc-handouts} % allow references to llorracc-handouts
+\usepackage{owner}             % llorracc or econ-ark?
+\usepackage{local-packages}    % LaTeX config in ./resources/latex
+\provideboolean{MPCMatchVersion}\setboolean{MPCMatchVersion}{true}
+\newcommand{\MPCMatch}{\ifthenelse{\boolean{MPCMatchVersion}}}
 
 \usepackage[Overlays]{optional}
-\usepackage{\local}
+%\usepackage{\local}
 \usepackage{ulem}   % used in slides
 
-\usepackage{\econtexShortcuts}
-\usepackage{\econark}
+\usepackage{econtexShortcuts}
+\usepackage{econark}
 
 % if this is uncommented, bullets are shown step by step; comment out to make printable version:
 \beamerdefaultoverlayspecification{<+->}
@@ -129,10 +137,10 @@ Yields $\cFunc_{t}(m)$ from which we can obtain
 \frametitle{Trick: View Everything from End of Period}
 
 Define 
-\input{./Equations/vEndtdefn.tex}
+\input{./Equations/vEndPrddefn.tex}
 so 
 \begin{equation}\begin{gathered}\begin{aligned}
-  \vFunc_{t}(\mNrm_{t})  & = \max_{\cNrm_{t}}~~ \util(\cNrm_{t}) + \vEndStg{t}(\mNrm_{t}-\cNrm_{t})
+  \vFunc_{t}(\mNrm_{t})  & = \max_{\cNrm_{t}}~~ \util(\cNrm_{t}) + \vFunc_{t}(\mNrm_{t}-\cNrm_{t})
 \end{aligned}\end{gathered}\end{equation}
 with FOC
 \input{./Equations/upEqbetaOp.tex}
@@ -156,7 +164,7 @@ E.g.\ use an equiprobable 7-point distribution:\medskip\medskip
 \frametitle{Trick: Discretize the Risks}
 
 \begin{equation}\begin{gathered}\begin{aligned}
-        \vEndStg_{t}^{\prime}(a_{t})  & =  \Discount \Rfree \PermGroFac_{t+1}^{-\CRRA} \left(\frac{1}{n}\right) \sum_{i=1}^{n} \util^{\prime}\left(\cFunc_{t+1}(\RNrm_{t+1} a_{t} + \tranShkEmp_{i})\right)
+        \vFunc^{\prime}(a_{t})  & =  \Discount \Rfree \PermGroFac_{t+1}^{-\CRRA} \left(\frac{1}{n}\right) \sum_{i=1}^{n} \util^{\prime}\left(\cFunc_{t+1}(\RNrmByG_{t+1} a_{t} + \tranShkEmp_{i})\right)
 \end{aligned}\end{gathered}\end{equation}
 
 %\input{./Equations/vDiscrete.tex}
@@ -173,9 +181,9 @@ using the FOC:
 \frametitle{Trick: Interpolate a Consumption Rule}
 
 \begin{enumerate}
-\item Define a grid of points $\vctr{\mNrm}$ (indexed $\mNrm\[i]$)
+\item Define a grid of points $\vctr{\mNrm}$ (indexed $\mNrm[i]$)
 \item Use numerical rootfinder to solve 
-$\util^{\prime}(\cNrm) = \vEndStg^{\prime}_{t}(\mNrm\[i]-\cNrm)$
+$\util^{\prime}(\cNrm) = \vFunc^{\prime}_{t}(\mNrm[i]-\cNrm)$
 \begin{itemize}
 \item The $\cNrm$ that solves this becomes $\cNrm[i]$
 \end{itemize}
@@ -201,15 +209,15 @@ Example: $\vctr{\mNrm}_{T-1} = \{0.,1.,2.,3.,4.\}$ (solid is `correct' soln)
 
 \end{frame}
 
-\begin{frame}[label=vEndtSlow]
+\begin{frame}[label=vEndPrdSlow]
 \frametitle{Problem: Numerical Rootfinding is {\it Slow}}
 
 Numerical search for values of $\cNrm_{T-1}$ satisfying
-$\util^{\prime}(\cNrm) = \vEndStg^{\prime}_{t}(\mNrm\[i]-\cNrm)$ at, say,
+$\util^{\prime}(\cNrm) = \vFunc^{\prime}_{t}(\mNrm[i]-\cNrm)$ at, say,
 6 gridpoints of $\vctr{\mNrm}_{T-1}$ may require hundreds or even thousands of
 evaluations of
 \begin{equation}\begin{gathered}\begin{aligned}
-        \vEndStg^{\prime}_{T-1}(\overbrace{{m}_{T-1}-\cNrm_{T-1}}^{\aNrm_{T-1}})  & =   \Discount_{T} \PermGroFac_{T}^{1-\CRRA}\left(\frac{1}{n}\right)\sum_{i=1}^{n}   \left( \RNrm_{T} a_{T-1} + \tranShkEmp_{i}\right)^{-\CRRA} \notag
+        \vFunc^{\prime}_{T-1}(\overbrace{{m}_{T-1}-\cNrm_{T-1}}^{\aNrm_{T-1}})  & =   \Discount_{T} \PermGroFac_{T}^{1-\CRRA}\left(\frac{1}{n}\right)\sum_{i=1}^{n}   \left( \RNrmByG_{T} a_{T-1} + \tranShkEmp_{i}\right)^{-\CRRA} \notag
 \end{aligned}\end{gathered}\end{equation}
 
 \end{frame}
@@ -220,9 +228,9 @@ evaluations of
 \begin{comment}
 
 \begin{frame}[label=vApprox]
-\frametitle{Solution: Approximate $\vEnd$?}
+\frametitle{Solution: Approximate \$\vEndPrd\$?}
 
-\pause Given $\{\vctr{\aNrm}_{T-1},\vctr{\vEnd}_{T-1}\}$, an approximate function $\grave{\vEnd}_{T-1}$ 
+\pause Given $\{\vctr{\aNrm}_{T-1},\vctr{\EndPrd}_{T-1}\}$, an approximate function $\grave{\EndPrd}_{T-1}$ 
 can be constructed by linear interpolation among the points:
 
 \includegraphics[width=4in]{./Figures/PlotOTm1RawVsInt.pdf}
@@ -230,9 +238,9 @@ can be constructed by linear interpolation among the points:
 \end{frame}
 
 \begin{frame}
-\frametitle{Using $\grave{\vEnd}_{T-1}$ In Optimization}
+\frametitle{Using $\grave{\EndPrd}_{T-1}$ In Optimization}
 \begin{equation*}\begin{gathered}\begin{aligned}
-  \vFunc_{t}(\mNrm_{t})  & = \max_{\cNrm_{t}}~~ \util(\cNrm_{t}) + \grave{\vEnd}_{t}(\mNrm_{t}-\cNrm_{t})
+  \vFunc_{t}(\mNrm_{t})  & = \max_{\cNrm_{t}}~~ \util(\cNrm_{t}) + \grave{\EndPrd}_{t}(\mNrm_{t}-\cNrm_{t})
 \end{aligned}\end{gathered}\end{equation*}
 is {\it much} faster,  but result is bad:
 \begin{center}
@@ -243,7 +251,7 @@ is {\it much} faster,  but result is bad:
 
 
 \begin{frame}
-\frametitle{Approximate $\vEndStg_{t}^{\prime}(\aNrm)$?}
+\frametitle{Approximate $\vFunc^{\prime}(\aNrm)$?}
 
 Better ... but still violates first two principles:
 \includegraphics[width=4in]{./Figures/PlotOPRawVSFOC.pdf}
@@ -261,16 +269,16 @@ Better ... but still violates first two principles:
 
 \begin{itemize}
 \item Define vector of {\it end-of-period} asset values $\vctr{\aNrm}$
-\item For each $\aNrm[j]$ compute $\vEndStg_{t}^{\prime}(\aNrm[j])$
+\item For each $\aNrm[j]$ compute $\vFunc^{\prime}(\aNrm[j])$
 \end{itemize}
 
 \pause 
 
-Each of these $\vEndStg_{t}^{\prime}[j]$ corresponds to a unique
+Each of these $\vFunc^{\prime}[j]$ corresponds to a unique
 $\cNrm[j]$ via FOC:
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cNrm[j]^{-\CRRA}  & = \vEndStg_{t}^{\prime}(\aNrm[j])
-\\ \cNrm[j]  & = \left(\vEndStg_{t}^{\prime}(\aNrm[j])\right)^{-1/\CRRA}
+  \cNrm[j]^{-\CRRA}  & = \vFunc^{\prime}(\aNrm[j])
+\\ \cNrm[j]  & = \left(\vFunc^{\prime}(\aNrm[j])\right)^{-1/\CRRA}
 \end{aligned}\end{gathered}\end{equation}
 
 \pause 
@@ -278,11 +286,11 @@ $\cNrm[j]$ via FOC:
 But the DBC says
 \begin{equation}\begin{gathered}\begin{aligned}
   \aNrm_{t}  & = \mNrm_{t} - \cNrm_{t}
-\\ \mNrm\[j]  & = \aNrm[j]+\cNrm[j]
+\\ \mNrm[j]  & = \aNrm[j]+\cNrm[j]
 \end{aligned}\end{gathered}\end{equation}
 
 \pause 
-So computing $\vEndStg_{t}^{\prime}$ at a vector of $\vctr{\aNrm}$ values has produced for us the corresponding $\vctr{\cNrm}$ and $\vctr{\mNrm}$ 
+So computing $\vFunc^{\prime}$ at a vector of $\vctr{\aNrm}$ values has produced for us the corresponding $\vctr{\cNrm}$ and $\vctr{\mNrm}$ 
 values at virtually no cost!  
 
 \pause 
@@ -362,8 +370,8 @@ and then obtain your approximation from
 \pause 
 Define {\it consumed} function and its derivative as 
 \begin{equation}\begin{gathered}\begin{aligned}
-  \cEndFunc_{t}(\aNrm)  & = (\vEndStg^{\prime}_{t}(\aNrm))^{-1/\CRRA}
-\\ \cEndFunc_{t}^{\aNrm}(\aNrm)  & = -(1/\CRRA)\left(\vEndStg_{t}^{\prime}(a)\right)^{-1-1/\CRRA} \vEndStg_{t}^{\prime\prime}(\aNrm) 
+  \cEndFunc_{t}(\aNrm)  & = (\vFunc^{\prime}_{t}(\aNrm))^{-1/\CRRA}
+\\ \cEndFunc_{t}^{\aNrm}(\aNrm)  & = -(1/\CRRA)\left(\vFunc^{\prime}(a)\right)^{-1-1/\CRRA} \vFunc^{\prime\prime}(\aNrm) 
 \end{aligned}\end{gathered}\end{equation}
 
 \pause 
@@ -391,14 +399,14 @@ and using chain rule it is easy to show that
 \begin{frame}
 \frametitle{Problem: $\Alt{\cFunc}$ Below Bottom $\mNrm$ Gridpoint and Extrapolation}
 
-Consider what happens as $a_{T-1}$ approaches $\Lo{a}_{T-1}\equiv-\Lo{\tranShkEmp}\RNrm_{T}^{-1}$,
+Consider what happens as $a_{T-1}$ approaches $\Min{a}_{T-1}\equiv-\Min{\tranShkEmp}\RNrmByG_{T}^{-1}$,
 \begin{equation*}\begin{gathered}\begin{aligned}
-        \lim_{{\aNrm} \downarrow \Lo{a}_{T-1}} \vEndStg{T-1}^{\prime}(\aNrm) 
-& =         \lim_{{\aNrm} \downarrow \Lo{a}_{T-1}} \Discount \Rfree \PermGroFac_{T}^{-\CRRA} \left(\frac{1}{n}\right) \sum_{i=1}^{n} \left(  \aNrm\RNrm_{T}+ \tranShkEmp_{i}\right)^{-\CRRA}
+        \lim_{{\aNrm} \downarrow \Min{a}_{T-1}} \vFunc{T-1}^{\prime}(\aNrm) 
+& =         \lim_{{\aNrm} \downarrow \Min{a}_{T-1}} \Discount \Rfree \PermGroFac_{T}^{-\CRRA} \left(\frac{1}{n}\right) \sum_{i=1}^{n} \left(  \aNrm\RNrmByG_{T}+ \tranShkEmp_{i}\right)^{-\CRRA}
 \\  & = \infty
 \end{aligned}\end{gathered}\end{equation*}
 
-This means our lowest value in $\vctr{\aNrm}_{T-1}$ should be $> \Lo{\aNrm}_{T-1}$.  
+This means our lowest value in $\vctr{\aNrm}_{T-1}$ should be $> \Min{\aNrm}_{T-1}$.  
 
 \medskip
 Suppose we construct $\Alt{\cFunc}$ by linear interpolation:
@@ -407,7 +415,7 @@ Suppose we construct $\Alt{\cFunc}$ by linear interpolation:
 \end{aligned}\end{gathered}\end{equation*}
 
 True $\cFunc$ is strictly concave 
-$\Rightarrow \exists \mRat^{-} > \Lo{\mNrm}_{T-1}$  for which $\mRat^{-}-\Alt{\cFunc}_{T-1}(\mRat^{-}) < \Lo{\aNrm}_{T-1}$
+$\Rightarrow \exists \mRat^{-} > \Min{\mNrm}_{T-1}$  for which $\mRat^{-}-\Alt{\cFunc}_{T-1}(\mRat^{-}) < \Min{\aNrm}_{T-1}$
 
 \end{frame}
 
@@ -416,16 +424,16 @@ $\Rightarrow \exists \mRat^{-} > \Lo{\mNrm}_{T-1}$  for which $\mRat^{-}-\Alt{\c
 
 Theory says that
 \begin{equation}\begin{gathered}\begin{aligned}
-  \lim_{\mRat \downarrow \Lo{\mNrm}_{T-1}} \cFunc_{T-1}(\mRat)  & = 0
-\\ \lim_{\mRat \downarrow \Lo{\mNrm}_{T-1}} \cFunc_{T-1}^{\mNrm}(\mRat)  & = \MPCmax_{T-1}
+  \lim_{\mRat \downarrow \Min{\mNrm}_{T-1}} \cFunc_{T-1}(\mRat)  & = 0
+\\ \lim_{\mRat \downarrow \Min{\mNrm}_{T-1}} \cFunc_{T-1}^{\mNrm}(\mRat)  & = \MPCmax_{T-1}
 \end{aligned}\end{gathered}\end{equation}
 
 \medskip 
 
 \begin{enumerate}
-\item Redefine $\vctr{\aNrm}$ {\it relative} to $\Lo{\aNrm}_{T-1}$
+\item Redefine $\vctr{\aNrm}$ {\it relative} to $\Min{\aNrm}_{T-1}$
 \item Construct corresponding $\vctr{\mNrm}_{T-1}$ and $\vctr{\cNrm}_{T-1}$
-\item Prepend $\Lo{\mNrm}_{T-1}$ to $\vctr{\mNrm}_{T-1}$
+\item Prepend $\Min{\mNrm}_{T-1}$ to $\vctr{\mNrm}_{T-1}$
 \item Prepend $0.$ to $\vctr{\cNrm}_{T-1}$
 \item Prepend $\MPCmax_{T-1}$ to $\vctr{\MPC}_{T-1}$
 \end{enumerate}
@@ -444,7 +452,7 @@ Grid Spacing: Uniform
 
 \begin{frame}
 \frametitle{Trick: Improving the $\aNrm$ Grid}
-Grid Spacing: Same $\{\Lo{\aNrm},\bar{\aNrm}\}$ But Triple Exponential $e^{e^{e^{...}}}$ Growth
+Grid Spacing: Same $\{\Min{\aNrm},\bar{\aNrm}\}$ But Triple Exponential $e^{e^{e^{...}}}$ Growth
 
 \includegraphics[width=4in]{./Figures/GothVInvVSGothCEEE.pdf}
 
@@ -479,8 +487,8 @@ Define $\grave{\cFunc}^{*}_{t}$ as soln to unconstrained problem.  Then
 
 Point where constraint makes transition from binding to not is
 \begin{equation*}\begin{gathered}\begin{aligned}
-    \util^{\prime}(\mNrm_{T-1}^{\#})  & = \vEndStg^{\prime}_{T-1}(0.)
-\\  \mNrm_{T-1}^{\#}  & = \left(\vEndStg^{\prime}_{T-1}(0.)\right)^{-1/\CRRA}
+    \util^{\prime}(\mNrm_{T-1}^{\#})  & = \vFunc^{\prime}_{T-1}(0.)
+\\  \mNrm_{T-1}^{\#}  & = \left(\vFunc^{\prime}_{T-1}(0.)\right)^{-1/\CRRA}
 \end{aligned}\end{gathered}\end{equation*}
 \pause\medskip
 
@@ -546,7 +554,7 @@ The FOC with respect to $\cNrm_{t}$ now yields an Euler equation
 \input{./Equations/EulercRiskyR.tex}
 \pause
 while the FOC with respect to the portfolio share yields
-\input{./Equations/FOCw.tex}
+%\input{./Equations/FOCw.tex}
 
 \end{frame}
 

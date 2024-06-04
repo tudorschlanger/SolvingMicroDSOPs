@@ -19,7 +19,11 @@ The combination of bank balances $\bLvl$ and income $\yLvl$ define's the consume
 \begin{equation}\begin{gathered}\begin{aligned}
       \mLvl_{\prd} & = \bLvl_{\prd}+\yLvl_{\prd} \label{eq:mLvl},
     \end{aligned}\end{gathered}\end{equation}
-available to be spent on consumption $\cLvl_{\prd}$ for a consumer subject to a liquidity constraint that requires $\cLvl \leq \mLvl$ (though we are not imposing such a constraint yet - see subsection~\ref{subsec:LiqConstrSelfImposed}).
+available to be spent on consumption $\cLvl_{\prd}$ for a consumer subject to a liquidity constraint that requires $\cLvl \leq \mLvl$ (though we are not imposing such a constraint yet - see subsection~\ref{subsec:LiqConstrSelfImposed}).  Finally we define
+  \begin{equation}\begin{gathered}\begin{aligned}\label{eq:aLvl}
+    \aLvl_{t} & = \mLvl_{t}-\cLvl_{t} 
+      \end{aligned}\end{gathered}\end{equation}
+mnemnoically as `assets-after-all-actions-are-accomplished.' 
 
 The consumer's goal is to maximize discounted utility from consumption over the rest of a lifetime ending at date $\trmT$:
 % chktex-file 36

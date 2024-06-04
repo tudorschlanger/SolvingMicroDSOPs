@@ -1,15 +1,20 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax)
-\input{.resources/texlive/add_search_paths}
+\input{.resources/add-tex-search-paths}
 \documentclass[titlepage, headings=optiontotocandhead]{econtex}
 \newcommand{\texname}{cctwMoM} % Keyname for the paper
 %\usepackage{./.econtexRoot}         % Set paths (like, \LaTeXInputs)
 
 \usepackage{local-macros}   % defns for this project
-\usepackage{econark}        % econark defns
+\usepackage{local-econark}  % econark defns
 \usepackage{local-packages} % LaTeX config in .resources/LaTeXInputs
 \usepackage{cctwMoM}        % LaTeX config in .resources/LaTeXInputs
 
-\input{cctwMoM-options} % booleans that control whether certain features are on or off
+% The providecommands below need to be fixed by
+% - examining the generated PDF to see whether it looks as it should
+% - if so, replacing \vEnd everywhere with \vEndPrd
+% - if not, further debugging with the end result that there is no vEnd
+
+\input{\texname-options} % booleans that control whether certain features are on or off
 
 \hypersetup{colorlinks=true,
   pdfauthor={Christopher D. Carroll <ccarroll@jhu.edu>, Kiichi Tokuoka <ktokuoka <ktokuoka@imf.org>, Weifeng Wu <wwu19@jhu.edu> },
@@ -24,13 +29,13 @@
   The Method of Moderation
 \end{verbatimwrite}
 
-\bibliographystyle{econtex}
-\begin{document}
-
 % Redefine \onlyinsubfile command defined in local.sty file:
 % This lets any submaterial called from here know that it is not standalone
 % If not called from here and IS standalone, can make bib (or other content)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
+
+\bibliographystyle{econtex}
+\begin{document}
 
 \title{The Method of Moderation}
 
@@ -147,6 +152,7 @@ For comparison to our new solution method, we use the endogenous gridpoints solu
 \import{./Figures/}{IntExpFOCInvPesReaOptNeedHiPlot.tex}
 
 \input{cctwMoM/MoM-Words-Rest.tex}
+
 \input{./Equations/MoM-Inequalities.tex}
 \input{cctwMoM/MoM-Inequalities-Describe.tex}
 \input{./Equations/MoM-KoppaOfMu.tex}
@@ -169,9 +175,9 @@ For comparison to our new solution method, we use the endogenous gridpoints solu
 \input{./Equations/mtCusp.tex}
 \input{./Equations/TighterUpperBound.tex}
 \input{./Equations/koppaLo.tex}
-\input{cctwMoM/TighterThreeFuncs.tex}
+\input{./cctwMoM/TighterThreeFuncs.tex}
 \input{./Equations/TighterThreeEqns.tex}
-\input{cctwMoM/TighterThreeFuncsExplain.tex}
+\input{./cctwMoM/TighterThreeFuncsExplain.tex}
 
 \begin{figure}
   \includegraphics[width=6in]{./Figures/IntExpFOCInvPesReaOptNeed45Plot}
@@ -187,15 +193,13 @@ For comparison to our new solution method, we use the endogenous gridpoints solu
   \input{cctwMoM/R-AR1.tex} 
 }{}
 
-% \subsection{Habits}
-
 \hypertarget{conclusion}{}
 \section{Conclusion}
 
 The method proposed here is not universally applicable.  For example, the method cannot be used for problems for which upper and lower bounds to the `true' solution are not known.  But many problems do have obvious upper and lower bounds, and in those cases (as in the consumption example used in the paper), the method may result in substantial improvements in accuracy and stability of solutions.
 
 \vfill\clearpage
-\notinsubfile{\input{.resources/latex/bibliography-blend}} \end{document}\endinput
+\input{.resources/latex/bibliography-blend} \end{document}\endinput
 
 % Local Variables:
 % TeX-master-file: t

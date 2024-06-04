@@ -1,10 +1,12 @@
+
 \hypertarget{multiple-control-variables}{}
 \section{Multiple Control Variables}\label{sec:multiple-control-variables}
-We now consider how to solve problems with multiple control variables.  
+We now consider how to solve problems with multiple control variables.  Specifically, we will examine a consumer who has both a choice of how much to consume and a choice of how much of their unconsumed resources to invest in risky versus safe assets.
+
 
 \subsection{Theory}\label{subsec:MCTheory}
 
-The new portfolio-share control variable is captured by the archaic Greek character \href{https://en.wikipedia.org/wiki/Stigma_(ligature)}{`stigma'}; it represents the share $\Shr$ of their disposable assets the agent invests in the risky asset (conventionally, the stock market).  Designating the return factor for the risky asset as $\Risky$ and the share of the portfolio invested in $\Risky$ as $\Shr$, the realized portfolio rate of return $\Rport$ as a function of the share $\Shr$ is:
+The portfolio-share control-variable is captured by the archaic Greek character \href{https://en.wikipedia.org/wiki/Stigma_(ligature)}{`stigma'}:  $\Shr$ represents the share of their available assets the agent invests in the risky asset (conventionally, the stock market).  Designating the return factor for the risky asset as $\Risky$ and the share of the portfolio invested in $\Risky$ as $\Shr$, the realized portfolio rate of return $\Rport$ as a function of the share $\Shr$ is:
 \begin{equation}\begin{gathered}\begin{aligned}
       \Rport(\Shr) &= \Rfree+(\Risky-\Rfree)\Shr \label{eq:Shr}.
     \end{aligned}\end{gathered}\end{equation}
@@ -15,67 +17,68 @@ If we imagine the portfolio share decision as being made simultaneously with the
 where we have deliberately omitted the {\interval}-designating subscripts for $\Shr$ and the return factors to highlight the point that, once the consumption and $\Shr$ decisions have been made, it makes no difference to this equation whether the risky return factor $\Risky$ is revealed a nanosecond before the end of the current {\interval} or a nanosecond after the beginning of the successor {\interval}.
 
 
-\begin{comment}
-  Designating the return factor for the risky asset as $\Risky_{\prd+1}$, and using $\Shr_{\prd}$ to represent the proportion of the portfolio invested in this asset before the return is realized after the beginning of $\prd+1$, corresponding to an assumption that the consumer cannot be `net short' and cannot issue net equity), the overall return on the consumer's portfolio between $t$ and $t+1$ will be:
-    \begin{equation}\begin{gathered}\begin{aligned}
-          \Rport_{\prd+1}  & = \Rfree(1-\Shr_{\prd}) + \Risky_{\prd+1}\Shr_{\prd} \label{eq:return1}
-          \\               & = \Rfree + (\Risky_{\prd+1}-\Rfree) \Shr_{\prd} %\label{eq:return2}
-        \end{aligned}\end{gathered}\end{equation}
-  and the maximization problem is
-    \begin{equation*}\begin{gathered}\begin{aligned}
-          \vFunc_{\prd}(m_{\prd})  & = \max_{\{{c}_{\prd},\Shr_{\prd}\}}   ~~ \uFunc(c_{\prd}) +  \DiscFac
-          \ExEndStg[{\vFunc}_{\prd+1}(m_{\prd+1})]
-          \\      & \text{s.t.} \nonumber
-          \\      \Rport_{\prd+1}  & = \Rfree + (\Risky_{\prd+1}-\Rfree) \Shr_{\prd}
-          \\      m_{\prd+1}  & = (m_{\prd}-c_{\prd})\Rport_{\prd+1} + \tranShkEmp_{\prd+1}
-          \\  0       \leq & \Shr_{\prd}  \leq 1, \label{eq:noshorts}
-        \end{aligned}\end{gathered}\end{equation*}
+% \begin{comment} %
+%   Designating the return factor for the risky asset as $\Risky_{\prd+1}$, and using $\Shr_{\prd}$ to represent the proportion of the portfolio invested in this asset before the return is realized after the beginning of $\prd+1$, corresponding to an assumption that the consumer cannot be `net short' and cannot issue net equity), the overall return on the consumer's portfolio between $t$ and $t+1$ will be:
+%     \begin{equation}\begin{gathered}\begin{aligned}
+%           \Rport_{\prd+1}  & = \Rfree(1-\Shr_{\prd}) + \Risky_{\prd+1}\Shr_{\prd} \label{eq:return1}
+%           \\               & = \Rfree + (\Risky_{\prd+1}-\Rfree) \Shr_{\prd} %\label{eq:return2}
+%         \end{aligned}\end{gathered}\end{equation}
+%   and the maximization problem is
+%     \begin{equation*}\begin{gathered}\begin{aligned}
+%           \vFunc_{\prd}(m_{\prd})  & = \max_{\{{c}_{\prd},\Shr_{\prd}\}}   ~~ \uFunc(c_{\prd}) +  \DiscFac
+%           \ExEndStg[{\vFunc}_{\prd+1}(m_{\prd+1})]
+%           \\      & \text{s.t.} \nonumber
+%           \\      \Rport_{\prd+1}  & = \Rfree + (\Risky_{\prd+1}-\Rfree) \Shr_{\prd}
+%           \\      m_{\prd+1}  & = (m_{\prd}-c_{\prd})\Rport_{\prd+1} + \tranShkEmp_{\prd+1}
+%           \\  0       \leq & \Shr_{\prd}  \leq 1, \label{eq:noshorts}
+%         \end{aligned}\end{gathered}\end{equation*}
 
-  The first order condition with respect to $c_{\prd}$ is almost identical to that in the single-control problem, equation (\ref{eq:upceqEvtp1}); the only difference is that the nonstochastic interest factor $\Rfree$ is now replaced by the portfolio return ${\Rport}_{\prd+1}$,
-    \begin{equation}\begin{gathered}\begin{aligned}
-          \uFunc^{c}(c_{\prd})  & = \DiscFac \ExEndStg [{\Rport}_{\prd+1} \vFunc^{m}_{\prd+1}(m_{\prd+1})] \label{eq:valfuncFOCRtilde},
-        \end{aligned}\end{gathered}\end{equation}
-  and the Envelope theorem derivation remains the same, yielding the Euler equation for consumption
-    \begin{equation}\begin{gathered}\begin{aligned}
-          \uFunc^{c}(c_{\prd})  & = \ExEndStg[\DiscFac {\Rport}_{\prd+1} \uFunc^{c}(c_{\prd+1})]. \label{eq:EulercRiskyR}
-        \end{aligned}\end{gathered}\end{equation}
+%   The first order condition with respect to $c_{\prd}$ is almost identical to that in the single-control problem, equation (\ref{eq:upceqEvtp1}); the only difference is that the nonstochastic interest factor $\Rfree$ is now replaced by the portfolio return ${\Rport}_{\prd+1}$,
+%     \begin{equation}\begin{gathered}\begin{aligned}
+%           \uFunc^{c}(c_{\prd})  & = \DiscFac \ExEndStg [{\Rport}_{\prd+1} \vFunc^{m}_{\prd+1}(m_{\prd+1})] \label{eq:valfuncFOCRtilde},
+%         \end{aligned}\end{gathered}\end{equation}
+%   and the Envelope theorem derivation remains the same, yielding the Euler equation for consumption
+%     \begin{equation}\begin{gathered}\begin{aligned}
+%           \uFunc^{c}(c_{\prd})  & = \ExEndStg[\DiscFac \Rport_{\prd+1} \uFunc^{c}(c_{\prd+1})]. \label{eq:EulercRiskyR}
+%         \end{aligned}\end{gathered}\end{equation}
 
-  The first order condition with respect to the risky portfolio share is
-    \begin{equation}\begin{gathered}\begin{aligned}
-          0  & = \ExEndStg[{\vFunc}_{\MidStgNxt}^{m}(m_{\prd+1})(\Risky_{\prd+1}-\Rfree){a}_{\prd}] \notag
-          \\         & = \ExEndStg\left[\uFunc^{c}\left(\cFunc_{\prd+1}(m_{\prd+1})\right)(\Risky_{\prd+1}-\Rfree)\right]{a}_{\prd} 
-          \\         & = \ExEndStg\left[\uFunc^{c}\left(\cFunc_{\prd+1}(m_{\prd+1})\right)(\Risky_{\prd+1}-\Rfree)\right], \label{eq:FOCw}        
-        \end{aligned}\end{gathered}\end{equation}
-  where the last line follows because $0/a_{\prd}=0$.
+%   % FOCw seems to be used somewhere maybe in slides
+%   The first order condition with respect to the risky portfolio share is
+%     \begin{equation}\begin{gathered}\begin{aligned}
+%           0  & = \ExEndStg[{\vFunc}_{\MidStgNxt}^{m}(m_{\prd+1})(\Risky_{\prd+1}-\Rfree){a}_{\prd}] \notag
+%           \\         & = \ExEndStg\left[\uFunc^{c}\left(\cFunc_{\prd+1}(m_{\prd+1})\right)(\Risky_{\prd+1}-\Rfree)\right]{a}_{\prd} 
+%           \\         & = \ExEndStg\left[\uFunc^{c}\left(\cFunc_{\prd+1}(m_{\prd+1})\right)(\Risky_{\prd+1}-\Rfree)\right], \label{eq:FOCw}        
+%         \end{aligned}\end{gathered}\end{equation}
+%   where the last line follows because $0/a_{\prd}=0$.
 
-  As before, we define $\vEnd$ as a function that yields the expected $t+1$ value of ending period $t$ with assets $a_{\prd}$.  However, now that there are two control variables, the expectation must be defined as a function of the chosen values of both of those variables, because expected end-of-period value will depend not just on how much the agent saves, but also on how the saved assets are allocated between the risky and riskless assets.  Thus we define
-  \begin{equation*}\begin{gathered}\begin{aligned}
-        \vMidStg(a_{\prd},\Shr_{\prd})  & = \DiscFac \vFunc_{\arvlStgShr}(m_{\prd+1})
-      \end{aligned}\end{gathered}\end{equation*}
-  which has derivatives
-  \begin{equation}\begin{gathered}\begin{aligned}
-        \vMidStg^a  & = \ExEndStg[\DiscFac {\Rport}_{\prd+1}\vFunc_{\prd+1}^{m}(m_{\prd+1})] = \ExEndStg[\DiscFac {\Rport}_{\prd+1}{\uFunc}_{\prd+1}^{c}(\cFunc_{\prd+1}(m_{\prd+1}))]
-      \end{aligned}\end{gathered}\end{equation}
-  \begin{equation}\begin{gathered}\begin{aligned}
-        \vMidStg^{\Shr}  & = \ExEndStg[\DiscFac (\Risky_{\prd+1}-\Rfree){\vFunc}_{\prd+1}^{m}(m_{\prd+1})  ]a_{\prd} = \ExEndStg[\DiscFac (\Risky_{\prd+1}-\Rfree){\uFunc}_{\prd+1}^{c}(\cFunc_{\prd+1}(m_{\prd+1}))  ]a_{\prd} \notag
-      \end{aligned}\end{gathered}\end{equation}
-  implying that the first order conditions (\ref{eq:EulercRiskyR}) and
-  (\ref{eq:FOCw}) can be rewritten
-  \begin{equation}\begin{gathered}\begin{aligned}
-        \uFunc^{c}(c_{\prd})  & = \vMidStg^{a}(m_{\prd}-c_{\prd},\Shr_{\prd}) \label{eq:FOCc}
-      \end{aligned}\end{gathered}\end{equation}
-  and 
-  \begin{equation}\begin{gathered}\begin{aligned}
-        0  & = \vFunc^{\Shr}_{\vMidStgStgShr}(a_{\prd},\Shr_{\prd}). \label{eq:FOCShr}
-      \end{aligned}\end{gathered}\end{equation}
-\end{comment}
+%   As before, we define \$\vEndPrd\$ as a function that yields the expected $t+1$ value of ending period $t$ with assets $a_{\prd}$.  However, now that there are two control variables, the expectation must be defined as a function of the chosen values of both of those variables, because expected end-of-period value will depend not just on how much the agent saves, but also on how the saved assets are allocated between the risky and riskless assets.  Thus we define
+%   \begin{equation*}\begin{gathered}\begin{aligned}
+%         \vMidStg(a_{\prd},\Shr_{\prd})  & = \DiscFac \vFunc_{\arvlStgShr}(m_{\prd+1})
+%       \end{aligned}\end{gathered}\end{equation*}
+%   which has derivatives
+%   \begin{equation}\begin{gathered}\begin{aligned}
+%         \vMidStg^a  & = \ExEndStg[\DiscFac {\Rport}_{\prd+1}\vFunc_{\prd+1}^{m}(m_{\prd+1})] = \ExEndStg[\DiscFac {\Rport}_{\prd+1}{\uFunc}_{\prd+1}^{c}(\cFunc_{\prd+1}(m_{\prd+1}))]
+%       \end{aligned}\end{gathered}\end{equation}
+%   \begin{equation}\begin{gathered}\begin{aligned}
+%         \vMidStg^{\Shr}  & = \ExEndStg[\DiscFac (\Risky_{\prd+1}-\Rfree){\vFunc}_{\prd+1}^{m}(m_{\prd+1})  ]a_{\prd} = \ExEndStg[\DiscFac (\Risky_{\prd+1}-\Rfree){\uFunc}_{\prd+1}^{c}(\cFunc_{\prd+1}(m_{\prd+1}))  ]a_{\prd} \notag
+%       \end{aligned}\end{gathered}\end{equation}
+%   implying that the first order conditions (\ref{eq:EulercRiskyR}) and
+%   (\ref{eq:FOCw}) can be rewritten
+%   \begin{equation}\begin{gathered}\begin{aligned}
+%         \uFunc^{c}(c_{\prd})  & = \vMidStg^{a}(m_{\prd}-c_{\prd},\Shr_{\prd}) \label{eq:FOCc}
+%       \end{aligned}\end{gathered}\end{equation}
+%   and 
+%   \begin{equation}\begin{gathered}\begin{aligned}
+%         0  & = \vFunc^{\Shr}_{\vMidStgStgShr}(a_{\prd},\Shr_{\prd}). \label{eq:FOCShr}
+%       \end{aligned}\end{gathered}\end{equation}
+% \end{comment}
 
 \hypertarget{stages-within-a-period}{}
 \subsection{{\Stg}s Within a {\Interval}}\label{subsec:stageswithin}
 
-which we will call the `consumption {\stg} $\cFunc$' and the `portfolio {\stg} $\Shr$.'  These could come in either order in the {\interval}: We designate the `portfolio choice first, then consumption' version by $[\Shr,\cFunc]$ and the `consumption choice first, then portfolio' as $[\cFunc,\Shr]$.
+In most cases it is possible to take multiple-control problems and turn them into a sequence of single-control `{\stgs}' which can be solved sequentially.  For this problem we will call the `consumption {\stg}' $\cFunc$ and the `portfolio {\stg}' $\Shr$.  Our earlier point that, substantively, the timing of the realization of the return shocks does not matter means that these could come in either order in the {\interval}: We designate the `portfolio choice first, then consumption' version by $[\Shr,\cFunc]$ and the `consumption choice first, then portfolio' scheme as $[\cFunc,\Shr]$. 
 
-In a problem with multiple {\stgs}, if we want to refer to a sub-{\move} of a particular {\stg} -- say, the {\Arrival} {\stg} of the portfolio {\stg} -- we simply add a {\stg}-indicator subscript (in square brackets) to the notation we have been using until now.  That is, the {\Arrival} {\stg} of the portfolio problem would be $\vFunc_{_\arvl[\Shr]}$.
+In a problem with multiple {\stgs}, if we want to refer to a sub-{\move} of a particular {\stg} -- say, the {\Arrival} {\move} of the portfolio {\stg} -- we simply add a {\stg}-indicator subscript (in square brackets) to the notation we have been using until now.  That is, the {\Arrival} {\stg} of the portfolio problem would be $\vFunc_{_\arvl[\Shr]}$.\{SB, AL, MNW: An alternative notational choice would be $\vFunc_{[_\arvl\Shr]}$.\}  (The version where both choices are made simultaneously could be designated as a single {\stg} named $[{\cFunc}{\Shr}]$) with arrival value function $\vFunc_{_\arvl[{\cFunc}{\Shr}]}$.\{SB, AL, MNW: with arrival value function $\vFunc_{[_\arvl{\cFunc}{\Shr}]}.$\}
 
 \hypertarget{revised-consumers-problem}{}
 \subsubsection{The (Revised) Consumer's Problem}\label{subsubsec:revised-consumers-problem}
@@ -90,20 +93,28 @@ A slight modification to the consumer's problem specified earlier is necessary t
 \hypertarget{subsubsec:investors-problem}{}
 \subsubsection{The Investor's Problem}\label{subsubsec:investors-problem}
 
-Consider the standalone problem of an `investor' whose continuation-value function $\vFunc_{[\Shr]_\cntn}$ depends on how much wealth $\wlthAftr$ they end up after the realization of the stochastic $\Risky$ return.  The expected value that the investor will obtain from any combination of initial $\wlthBefr$ and their optimal choice of the portfolio share $\Shr$ is the expectation of the continuation-value function over the wealth that results from the portfolio choice:
+Consider the standalone problem of an `investor' whose continuation-value function $\vFunc_{[\Shr]_\cntn}$ depends on how much wealth $\wlthAftr$ they end up after the realization of the stochastic $\Risky$ return.
+
+Using the $\Opt{\phantom{\bullet}}$ accent to designate the optimized value of the accented control, the {\Decision} stage of this problem yields the portfolio share function:
+  \begin{equation}\begin{gathered}\begin{aligned}
+    \Opt{\Shr}(\wlthBefr)  = & \argmax_{\Shr} \Ex_{\MidStg[\Shr]}\left[\vFunc_{[\Shr]_{_\cntn}}\overbrace{\left({\wlthBefr}\Rport(\Shr)\right)}^{\wlthAftr}\right] \label{eq:shrDecision},
+         \end{aligned}\end{gathered}\end{equation}
+and the {\Arrival} value function is the expectation of the {\Continuation}-value function over the wealth that results from the portfolio returns obtained under the choice of portfolio share made in the {\Decision} {\move} of the problem, $\Opt{\Rport}=\Rfree+\Opt{\Shr}(\wlthBefr)(\Risky-\Rfree)$:
 \begin{equation}\begin{gathered}\begin{aligned}
-  \vFunc_{_\arvl[\Shr]}(\wlthBefr)  = & \max_{\Shr}~ \Ex_{\BegStg[\Shr]}\left[\vFunc_{[\Shr]_{_\cntn}}\overbrace{\left(\Rport(\Shr){\wlthBefr}\right)}^{\wlthAftr}\right] \label{eq:vMidStgShr}
+  \vFunc_{_\arvl[\Shr]}(\wlthBefr)  = & \Ex_{\MidStg[\Shr]}\left[ \vFunc_{[\Shr]_{_\cntn}}(\wlthBefr \Opt{\Rport} )\right] \label{eq:vMidStgShr}.
     \end{aligned}\end{gathered}\end{equation}
-where we have omitted any {\interval} designator like $\prd$ for the {\interval} in which this problem is solved because, with the continuation-value function defined already as $\vFunc_{[\Shr]_\cntn}(\wlthAftr)$, the problem is self-contained.  The solution to this problem will yield an optimal $\Shr$ decision rule $\optml{\Shr}(\wlthBefr).$  Finally, we can specify the value of an investor `arriving' with $\wlthBefr$ as the expected value that will be obtained when the investor invests optimally, generating the \textit{ex ante} optimal stochastic portfolio return factor $\optml{\Rport}(\wlthBefr)=\Rport(\optml{\Shr}(\wlthBefr))$:
-\begin{equation}\begin{gathered}\begin{aligned}
-      \vFunc_{_\arvl[\Shr]}(\wlthBefr)  = & \Ex_{_\arvl}[\vFunc_{[\Shr]_\cntn}](\overbrace{\optml{\Rport}(\wlthBefr)}^{\wlthAftr})].
-\end{aligned}\end{gathered}\end{equation}
+%where we have omitted any {\interval} designator like $\prd$ for the {\interval} in which this problem is solved because, with the continuation-value function defined already as $\vFunc_{[\Shr]_\cntn}(\wlthAftr)$, the problem is self-contained.  %The solution to this problem will yield an optimal $\Shr$ decision rule $\optml{\Shr}(\wlthBefr).$
+
+% Finally, we can specify the value of an investor `arriving' with $\wlthBefr$ as the expected value that will be obtained when the investor invests optimally, generating the \textit{ex ante} optimal stochastic portfolio return factor $\optml{\Rport}(\wlthBefr)=\Rport(\optml{\Shr}(\wlthBefr))$:
+% \begin{equation}\begin{gathered}\begin{aligned}
+%       \vFunc_{_\arvl[\Shr]}(\wlthBefr)  = & \Ex_{_\arvl}[\vFunc_{[\Shr]_\cntn}](\overbrace{\optml{\Rport}(\wlthBefr)}^{\wlthAftr})].
+% \end{aligned}\end{gathered}\end{equation}
 
 The reward for all this notational investment is that it is now clear that \emph{exactly the same code} for solving the portfolio share problem can be used in two distinct problems: a `beginning-of-period-returns' model and an `end-of-period-returns' model.
 
 \hypertarget{beginning-returns}{}
 \subsubsection{The `beginning-of-period returns' Problem}\label{subsubsec:beginning-returns}
-The beginning-returns problem effectively just inserts a portfolio choice that happens at a {\stg} immediately before the consumption {\stg} in the optimal consumption problem described in \eqref{eq:vBalances}, for which we had a beginning-of-{\stg} value function $\vFunc_{_\arvl[\cFunc]}(\bNrm)$.  The agent makes their portfolio share decision within the {\stg} but (obviously) before the risky returns $\Risky$ for the {\interval} have been realized.  So the problem's portfolio-choice {\stg} also takes $\kNrm$ as its initial state and solves the investor's problem outlined in section~\ref{subsubsec:investors-problem} above:
+The beginning-returns problem effectively just inserts a portfolio choice that happens at a {\stg} immediately before the consumption {\stg} in the optimal consumption problem described in \eqref{eq:vBalances}, for which we had a beginning-of-{\stg} value function $\vFunc_{_\arvl[\cFunc]}(\bNrm)$.  The agent makes their portfolio share decision within the {\stg} but (obviously) before the risky returns $\Risky$ for the {\interval} have been realized.  So the problem's portfolio-choice {\stg} also takes $\kNrm$ as its initial state and solves the investor's problem outlined in section~\ref{subsubsec:investors-problem}:
 \begin{equation}\begin{gathered}\begin{aligned}
   \vFunc_{_\arvl[\Shr]}(\kNrm) & = \Ex_{_\arvl[\Shr]}[\vFunc_{[\Shr]_{_\cntn}}(\underbrace{\kNrm\optml{\Rport}}_{\bNrm})]
 \\ \vFunc_{[\Shr]_\cntn}(\bNrm)  & = \vFunc_{_\arvl[\cFunc]}(\bNrm)
@@ -113,21 +124,22 @@ Since in this setup bank balances have been determined before the consumption pr
 \begin{equation}\begin{gathered}\begin{aligned}
       \vFunc_{_\arvl[\cFunc]}(\bNrm) = & \max_{\cFunc}~ \uFunc(\cNrm) + \Ex_{_\arvl[\cFunc]}[\vFunc_{[\cFunc]_\cntn}(\underbrace{\overbrace{\bNrm+\tranShkEmp}^{\mNrm}-\cNrm}_{\aNrm})]
     \end{aligned}\end{gathered}\end{equation}
-where, because the consumption {\stg} is the last {\stg} in the {\interval}, the continuatibon-value function for the $\cFunc$ {\stg} is just the continuation-value function for the period as a whole:
+and since the consumption stage is the last stage in the {\interval}, the (undated) $\aNrm$ that emerges from this equation is equivalent to the $\aNrm_{t}$ characterizing the end of the {\interval}.  The `state transition' equation between $\prd$ and $\prd+1$ is simply $\kNrm_{t+1} = \aNrm_{\prd}$ and the continuation-value function transition is $\vFunc_{\prd_\cntn}(\kNrm) \leftassign \DiscFac \vFunc_{_\arvl(\prd+1)}(\kNrm)$ which reflects the above-mentioned point that there is no substantive difference between the two problems (their $\vFunc_{[\cFunc]}(\mNrm)$ value functions and $\cFunc(\mNrm)$ functions will be identical).
 \begin{equation}\begin{gathered}\begin{aligned}
       \vFunc_{[\cFunc]_\cntn}(\aNrm) = & \vFunc_{\prd_\cntn}(\aNrm)
     \end{aligned}\end{gathered}\end{equation}
 (and recall that $\vFunc_{\prd_\cntn}(\aNrm)$ is exogenously provided as an input to the {\interval}'s problem via the transition equation assumed earlier: $\vFunc_{\prd_\cntn}(\aNrm)=\DiscFac \vFunc_{_\arvl(\prd+1)}(a)$).
 
 \subsubsection{The `end-of-period-returns' Problem}
-
-If the portfolio share and risky returns are realized at the end of the {\interval}, we need to move the portfolio choice {\stg} to immediately before the point at which returns are realized (and after the $\cFunc$ choice has been made).  The problem is the same as the portfolio problem defined above, except that the input for the investment {\stg} is the assets remaining after the consumption choice: $\aNrm$.  So, the portfolio {\stg} of the problem is
+If the portfolio share and risky returns are realized at the end of the {\interval}, we need to move the portfolio choice {\stg} to immediately before the point at which returns are realized (and after the $\cFunc$ choice has been made).  This creates a slight awkwardness because the variable we have heretofore dubbed $\aNrm$ is no longer the end-of-period state, since this money must be invested and the returns realized before the end of the period.  We want to continue using $\aNrm$ for `assets-after-all-actions-are-accomplished' but now to include the `actions' of the market, so we will temporarily designate the consumer's unspent market resources by $\wlthBefr = mNrm-\cNrm$ because defined $\wlthBefr$ earlier as the input to the investor's problem.  So, the portfolio {\stg} of the problem is
 \begin{equation}\begin{gathered}\begin{aligned}
-  \vFunc_{_\arvl[\Shr]}(\aNrm) = & \Ex_{_\arvl[\Shr]}[\vFunc_{[\Shr]_{_\cntn}}(\underbrace{\aNrm\optml{\Rport}}_{\kNrm})] %= \Ex_{[\cFunc]_\arvl}[\vFunc_{}(\kNrm)]
+  \vFunc_{_\arvl[\Shr]}(\wlthBefr) = & \Ex_{_\arvl[\Shr]}[\vFunc_{[\Shr]_{_\cntn}}(\underbrace{\optml{\Rport}\wlthBefr}_{\equiv \aNrm})] %= \Ex_{[\cFunc]_\arvl}[\vFunc_{}(\kNrm)]
     \end{aligned}\end{gathered}\end{equation}
-where we are designating the post-realization result of the investment as $\kNrm$, and since the $\Shr$-{\stg} is the last {\stg} of the problem the end-of-{\stg} $\kNrm$ becomes the end-of-{\interval} $\kNrm_{\prd}.$ 
+so the continuation-value function is $\vFunc_{[\Shr]_\cntn}(\underbrace{\aNrm}_{\equiv \Rport \wlthBefr})$ is still a function of $\aNrm$ (and
+the `state transition' equation between $\prd$ and $\prd+1$ remains $\kNrm_{t+1} = \aNrm_{\prd}$ and the continuation-value function transition is $\vFunc_{\prd_\cntn}(\aNrm) \leftassign \DiscFac \vFunc_{_\arvl(\prd+1)}(\kNrm)$.
 
-The `state transition' equation between $\prd$ and $\prd+1$ is simply $\bNrm_{t+1} = \kNrm_{\prd}$ and the continuation-value function transition is $\vFunc_{\prd_\cntn}(\kNrm) \sameas \DiscFac \vFunc_{_\arvl(\prd+1)}(\kNrm)$ which reflects the above-mentioned point that there is no substantive difference between the two problems (their $\vFunc_{[\cFunc]}(\mNrm)$ value functions and $\cFunc(\mNrm)$ functions will be identical).
+% which reflects the above-mentioned point that there is no substantive difference between the two problems (their $\vFunc_{[\cFunc]}(\mNrm)$ value functions and $\cFunc(\mNrm)$ functions will be identical).
+
 
 (Note that we are assuming that there will be only one consumption function in the period, so no {\stg} subscript is necessary to pick out `the consumption function'). 
 
