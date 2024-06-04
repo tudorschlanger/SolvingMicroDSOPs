@@ -1,7 +1,6 @@
 #/bin/bash
-scriptDir="$(realpath $(dirname $0))" ; cd $scriptDir
-pdflatex -shell-escape -output-format dvi cctwMoM
-bibtex -terse cctwMoM
-pdflatex -shell-escape -output-format dvi cctwMoM
-pdflatex -shell-escape -output-format dvi cctwMoM
-rm -f economics.bib; make4ht  --utf8 --config cctwMoM.cfg --format html5 cctwMoM "svg            "   "-cunihtf -utf8"
+pdflatex -interaction=nonstopmode                           -halt-on-error -file-line-error -shell-escape \\newcommand\\UseOption{FromShell}\\input{cctwMoM}
+bibtex -terse    cctwMoM
+pdflatex -interaction=nonstopmode                           -halt-on-error -file-line-error -shell-escape \\newcommand\\UseOption{FromShell}\\input{cctwMoM}
+pdflatex -interaction=nonstopmode                           -halt-on-error -file-line-error -shell-escape \\newcommand\\UseOption{FromShell}\\input{cctwMoM}
+latexmk -c

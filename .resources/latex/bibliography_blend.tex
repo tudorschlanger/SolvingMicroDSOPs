@@ -1,0 +1,57 @@
+% Allows two (optional) supplements to hard-wired \texname.bib bibfile:
+% system.bib is a default bibfile that supplies anything missing elsewhere
+% addrefs.bib is an override bibfile that supplants anything in \texname.bib or system.bib
+\provideboolean{addrefsExists}
+\provideboolean{sysbibExists}
+\provideboolean{BothExist}
+\provideboolean{NeitherExists}
+\setboolean{BothExist}{true}
+\setboolean{NeitherExists}{true}
+\providecommand{\sysbib}{system}
+\renewcommand{\sysbib}{system}
+\IfFileExists{\econtexRoot/addrefs.bib}{
+  % then
+  \typeout{References in addrefs.bib will take precedence over those elsewhere}
+  \setboolean{addrefsExists}{true}
+  \setboolean{NeitherExists}{false} % Default is true
+}{
+  % else
+  \setboolean{addrefsExists}{false} % No added refs exist so defaults will be used
+  \setboolean{BothExist}{false}     % Default is that addrefs and sysbib.bib both exist
+}
+
+% Deal with case where system.bib is found by kpsewhich
+\IfFileExists{/usr/local/texlive/texmf-local/bibtex/bib/system.bib}{
+  % then
+  \typeout{References in default global system.bib will be used for items not found elsewhere}
+  \setboolean{sysbibExists}{true}
+  \setboolean{NeitherExists}{false}
+}{
+  % else
+  \typeout{Found no global database file}
+  \setboolean{sysbibExists}{false}
+  \setboolean{BothExist}{false}
+}
+
+\ifthenelse{\boolean{showPageHead}}{ %then
+  \clearpairofpagestyles % No header for references pages
+  }{} % No head has been set to clear
+
+\ifthenelse{\boolean{BothExist}}{
+  % then use both
+  \typeout{bibliography{\econtexRoot/addrefs,\econtexRoot/\texname,\sysbib}}
+  \bibliography{\econtexRoot/addrefs,\econtexRoot/\texname,\sysbib}
+  % else both do not exist
+}{ % maybe neither does?
+  \ifthenelse{\boolean{NeitherExists}}{
+    \typeout{bibliography{\texname}}
+    \bibliography{\texname}}{
+    % no -- at least one exists
+    \ifthenelse{\boolean{addrefsExists}}{
+      \typeout{bibliography{\econtexRoot/addrefs,\econtexRoot/\texname}}
+      \bibliography{\econtexRoot/addrefs,\econtexRoot/\texname}}{
+      \typeout{bibliography{\econtexRoot/\texname,\sysbib}}
+      \bibliography{        \econtexRoot/\texname,\sysbib}}
+  } % end of picking the one that exists
+} % end of testing whether neither exists
+\small
