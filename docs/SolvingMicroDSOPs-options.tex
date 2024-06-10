@@ -9,8 +9,8 @@
 \provideboolean{draftmode}\setboolean{draftmode}{true}
 % \setboolean{draftmode}{false}
 \newcommand{\Draft}{\ifthenelse{\boolean{draftmode}}}
-\Draft{\usepackage{showlabels}
-  \renewcommand{\showlabelsetlabel}[1]{\tiny #1}
+\Draft{
+\usepackage[left]{showlabels}
 }{}
 
 % Include or exclude Method of Moderation material 
@@ -58,7 +58,7 @@
 % \setboolean{ToFix}{false} 
 \newcommand{\Fix}{\ifthenelse{\boolean{ToFix}}}
 
-% Show or hide the time subscripts for
+% Show or hide the time subscripts
 \provideboolean{hidetime}\setboolean{hidetime}{true}
 % \setboolean{hidetime}{false} 
 \newcommand{\timehide}{\ifthenelse{\boolean{hidetime}}}

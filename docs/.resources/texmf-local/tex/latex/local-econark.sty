@@ -17,7 +17,7 @@
 
 % Appendices and body are subfiles
 \RequirePackage{subfiles}
-\RequirePackage{xmpincl} % mathstat.dal..ca/~sellinger/pdfa
+%\RequirePackage{xmpincl} % mathstat.dal..ca/~sellinger/pdfa
 
 % Get all the packages from the American Mathematical Society
 \RequirePackage{amsmath,amsfonts,amsthm,amssymb}
@@ -29,43 +29,39 @@
 \newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{\G@refundefinedtrue{#3}}{#2}}
 \makeatother
 
-% Home of Econ-ARK
-\providecommand{\ARKurl}{\href{https://econ-ark.org}{{Econ-ARK}}}
+% variables:
+%% principles:
+%% - Levels (Lvl) are boldface italic
+%% - Normalized (Nrm) are plain
+%% - Aggregate variables are marked by Agg and are upper case
+%% - Individual variables are marked by Ind and are upper case
+%% - The combination of Ind and Agg is marked by All
+%% - If the problem has only one shock, the Ind and Agg can be omitted
 
-% Define various generically useful terms and items
-\providecommand{\avg}{\bar}
-\providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
-\providecommand{\CDF}{\mathcal{F}}
-
-% Constrained
-\newcommand{\cnstr}[1]{\grave{#1}}
-
-% Levels are boldface
-\providecommand{\Lvl}{\pmb}     % Levels of variables are bold
-\providecommand{\aLvl}{\pmb{\mathit{a}}}
-\providecommand{\bLvl}{\pmb{\mathit{b}}}
-\providecommand{\cLvl}{\pmb{\mathit{c}}}
-\providecommand{\dLvl}{\pmb{\mathit{d}}}
-\providecommand{\eLvl}{\pmb{\mathit{e}}}
-\providecommand{\fLvl}{\pmb{\mathit{f}}}
-\providecommand{\gLvl}{\pmb{\mathit{g}}}
-\providecommand{\hLvl}{\pmb{\mathit{h}}}
-\providecommand{\iLvl}{\pmb{\mathit{i}}}
-\providecommand{\jLvl}{\pmb{\mathit{j}}}
-\providecommand{\kLvl}{\pmb{\mathit{k}}}
-\providecommand{\mLvl}{\pmb{\mathit{m}}}
-\providecommand{\nLvl}{\pmb{\mathit{n}}}
-\providecommand{\pLvl}{\pmb{\mathit{p}}}
-\providecommand{\qLvl}{\pmb{\mathit{q}}}
-\providecommand{\rLvl}{\pmb{\mathit{r}}}
-\providecommand{\sLvl}{\pmb{\mathit{s}}}
-\providecommand{\tLvl}{\pmb{\mathit{t}}}
-\providecommand{\uLvl}{\pmb{\mathit{u}}}
-\providecommand{\vLvl}{\pmb{\mathit{v}}}
-\providecommand{\wLvl}{\pmb{\mathit{w}}}
-\providecommand{\xLvl}{\pmb{\mathit{x}}}
-\providecommand{\yLvl}{\pmb{\mathit{y}}}
-\providecommand{\zLvl}{\pmb{\mathit{z}}}
+\providecommand{\aLvl}{\boldsymbol{\mathit{a}}}
+\providecommand{\bLvl}{\boldsymbol{\mathit{b}}}
+\providecommand{\cLvl}{\boldsymbol{\mathit{c}}}
+\providecommand{\dLvl}{\boldsymbol{\mathit{d}}}
+\providecommand{\eLvl}{\boldsymbol{\mathit{e}}}
+\providecommand{\fLvl}{\boldsymbol{\mathit{f}}}
+\providecommand{\gLvl}{\boldsymbol{\mathit{g}}}
+\providecommand{\hLvl}{\boldsymbol{\mathit{h}}}
+\providecommand{\iLvl}{\boldsymbol{\mathit{i}}}
+\providecommand{\jLvl}{\boldsymbol{\mathit{j}}}
+\providecommand{\kLvl}{\boldsymbol{\mathit{k}}}
+\providecommand{\mLvl}{\boldsymbol{\mathit{m}}}
+\providecommand{\nLvl}{\boldsymbol{\mathit{n}}}
+\providecommand{\pLvl}{\boldsymbol{\mathit{p}}}
+\providecommand{\qLvl}{\boldsymbol{\mathit{q}}}
+\providecommand{\rLvl}{\boldsymbol{\mathit{r}}}
+\providecommand{\sLvl}{\boldsymbol{\mathit{s}}}
+\providecommand{\tLvl}{\boldsymbol{\mathit{t}}}
+\providecommand{\uLvl}{\boldsymbol{\mathit{u}}}
+\providecommand{\vLvl}{\boldsymbol{\mathit{v}}}
+\providecommand{\wLvl}{\boldsymbol{\mathit{w}}}
+\providecommand{\xLvl}{\boldsymbol{\mathit{x}}}
+\providecommand{\yLvl}{\boldsymbol{\mathit{y}}}
+\providecommand{\zLvl}{\boldsymbol{\mathit{z}}}
 
 \providecommand{\ALvl}{\boldsymbol{\mathit{A}}}
 \providecommand{\BLvl}{\boldsymbol{\mathit{B}}}
@@ -94,67 +90,7 @@
 \providecommand{\YLvl}{\boldsymbol{\mathit{Y}}}
 \providecommand{\ZLvl}{\boldsymbol{\mathit{Z}}}
 
-
-% Functions are Roman not italicized
-\providecommand{\aFunc}{\mathrm{a}}
-\providecommand{\bFunc}{\mathrm{b}}
-\providecommand{\cFunc}{\mathrm{c}}
-
-\providecommand{\dFunc}{\mathrm{d}}
-\providecommand{\eFunc}{\mathrm{e}}
-\providecommand{\fFunc}{\mathrm{f}}
-\providecommand{\gFunc}{\mathrm{g}}
-\providecommand{\hFunc}{\mathrm{h}}
-\providecommand{\iFunc}{\mathrm{i}}
-\providecommand{\jFunc}{\mathrm{j}}
-\providecommand{\kFunc}{\mathrm{k}}
-\providecommand{\mFunc}{\mathrm{m}}
-\providecommand{\nFunc}{\mathrm{n}}
-\providecommand{\pFunc}{\mathrm{p}}
-\providecommand{\sFunc}{\mathrm{s}}
-\providecommand{\rFunc}{\mathrm{r}}
-\providecommand{\uFunc}{\mathrm{u}}
-\providecommand{\vFunc}{\mathrm{v}}
-\providecommand{\wFunc}{\mathrm{w}}
-\providecommand{\xFunc}{\mathrm{x}}
-\providecommand{\yFunc}{\mathrm{y}}
-\providecommand{\zFunc}{\mathrm{z}}
-
-\providecommand{\vFuncLvl}{\mathbf{v}}
-% level idiosyncratic
-\providecommand{\cFuncLvl}{}  % in case already defined 
-\providecommand{\vFuncLvl}{}  % 
-\renewcommand{\cFuncLvl}{\boldsymbol{\mathrm{c}}}   % consumption function 
-\renewcommand{\vFuncLvl}{\boldsymbol{\mathrm{v}}}   % value function
-
-\providecommand{\AFunc}{\mathrm{A}}
-\providecommand{\BFunc}{\mathrm{B}}
-\providecommand{\CFunc}{\mathrm{C}}
-\providecommand{\DFunc}{\mathrm{D}}
-\providecommand{\EFunc}{\mathrm{E}}
-\providecommand{\FFunc}{\mathrm{F}}
-\providecommand{\GFunc}{\mathrm{G}}
-\providecommand{\HFunc}{\mathrm{H}}
-\providecommand{\IFunc}{\mathrm{I}}
-\providecommand{\JFunc}{\mathrm{J}}
-\providecommand{\KFunc}{\mathrm{K}}
-\providecommand{\LFunc}{\mathrm{L}}
-\providecommand{\MFunc}{\mathrm{M}}
-\providecommand{\NFunc}{\mathrm{N}}
-\providecommand{\OFunc}{\mathrm{O}}
-\providecommand{\PFunc}{\mathrm{P}}
-\providecommand{\QFunc}{\mathrm{Q}}
-\providecommand{\RFunc}{\mathrm{R}}
-\providecommand{\SFunc}{\mathrm{S}}
-\providecommand{\TFunc}{\mathrm{T}}
-\providecommand{\UFunc}{\mathrm{U}}
-\providecommand{\VFunc}{\mathrm{V}}
-\providecommand{\WFunc}{\mathrm{W}}
-\providecommand{\XFunc}{\mathrm{X}}
-\providecommand{\YFunc}{\mathrm{Y}}
-\providecommand{\ZFunc}{\mathrm{Z}}
-
-% Ratios to permanent income are normal face
+%%  Ratios to permanent income are normal face
 \providecommand{\aNrm}{a}
 \providecommand{\bNrm}{b}
 \providecommand{\cNrm}{c}
@@ -189,77 +125,81 @@
 \providecommand{\YNrm}{Y}
 \providecommand{\ZNrm}{Z}
 
-% Individual-level (idosyncratic) variables
-\providecommand{\tranShkInd}{\xi}      % (purely) transitory
-\providecommand{\tranShk}{\tranShkInd} % alias
+%% Individual-level (idosyncratic) variables
 \providecommand{\permShkInd}{\psi}     % (purely) permanent
-\providecommand{\permShk}{\permShkInd} % alias
+\providecommand{\permShk}{\permShkInd} % unspecified (but only one) shock
+\providecommand{\PermShk}{\PermShkAgg} % unspecified (but only one) shock
+\providecommand{\tranShkInd}{\xi}      % (purely) transitory
 \providecommand{\permShkIndMin}{\Min{\permShkInd}}
 \providecommand{\permShkIndMax}{\Max{\permShkInd}}
 \providecommand{\prstShkInd}{\phi}     % persistent not permanent
+\providecommand{\prstShkAgg}{\Phi}     % persistent not permanent
+\providecommand{\prstShk}{\phi}     % unspecified (unique)
 \providecommand{\prstShkIndMin}{\Min{\prstShkInd}}     % persistent not permanent
 \providecommand{\prstShkIndMax}{\Max{\prstShkInd}}     % persistent not permanent
-\providecommand{\prstShk}{\prstShkInd} % alias
-\providecommand{\tranShkAll}{\pmb{\xi}}
 \providecommand{\tranShkMin}{\Min{\xi}}
 \providecommand{\tranShkMax}{\Max{\xi}}
+
+%% Transitory shock for employed individuals
+\providecommand{\tranShkEmp}{\theta}     % ind
+\providecommand{\TranShkEmp}{\Theta}     % agg
+\providecommand{\tranShkEmpMin}{\Min{\tranShkEmp}}    
+\providecommand{\tranShkEmpMax}{\Max{\tranShkEmp}}    
+\providecommand{\IncUnemp}{\mu}  % Income in unemployment
 \providecommand{\tranShkEmpMin}{\Min{\tranShkEmp}}
 \providecommand{\tranShkEmpMax}{\Max{\tranShkEmp}}
 
-% Agg variables (also affect individuals)
+%% Agg variables (also affect individuals)
 \providecommand{\TranShkAgg}{\Theta}   % 
 \providecommand{\PermShkAgg}{\Psi}  % 
 
-% Shock std and var
+%% Shock std and var
 \providecommand{\std}{\sigma}
 \providecommand{\tranShkIndStd}{\std_{\tranShkInd}}     % 
 \providecommand{\tranShkIndVar}{\std^{2}_{\tranShkInd}} % 
 \providecommand{\TranShkAggStd}{\std_{\TranShkAgg}}     %
 \providecommand{\TranShkAggVar}{\std^{2}_{\TranShkAgg}} %
 
-% Combo variables (combining Ind and Agg) 
-\providecommand{\PermShkCmb}{\mathbf{\Psi}}
-\providecommand{\PermShkCmbStd}{\std_{\PermShkCmb}}
-\providecommand{\PermShkCmbVar}{\std^{2}_{\PermShkCmb}}
+%% Combo variables (combining Ind and Agg) 
+\providecommand{\PermShkAll}{\mathbf{\Psi}}
+\providecommand{\PermShkAllStd}{\std_{\PermShkAll}}
+\providecommand{\PermShkAllVar}{\std^{2}_{\PermShkAll}}
 
 \providecommand{\PermLvlAgg}{\boldsymbol{\mathit{P}}}      % 
 \providecommand{\permLvlInd}{\boldsymbol{\mathit{p}}}      % 
-\providecommand{\permLvl}{\mathrm{p}}      % 
-\providecommand{\PermLvlCmb}{\mathfrak{P}}
-\providecommand{\pPLvl}{\mathfrak{P}} % Total permanent level (ind and agg)
+\providecommand{\permLvl}{\permLvlInd}      % 
+\providecommand{\PermLvl}{\PermLvlAgg}      % 
+\providecommand{\PermLvlAll}{\mathfrak{P}}
 
-\providecommand{\tranShkCmb}{\pmb{\xi}} 
-%\providecommand{\TranShkCmb}{\pmb{\Xi}}  % doesn't make sense ; \tranShkCmb already includes 
-\providecommand{\tranShkCmbStd}{\std_{\tranShkCmb}}
-\providecommand{\tranShkCmbVar}{\std^{2}_{\tranShkCmb}}
+\providecommand{\tranShkAll}{\pmb{\xi}} 
+\providecommand{\TranShkAll}{\pmb{\Xi}}  % doesn't make sense ; \tranShkAll already includes 
+\providecommand{\tranShkAllStd}{\std_{\tranShkAll}}
+\providecommand{\tranShkAllVar}{\std^{2}_{\tranShkAll}}
 
-% Transitory shock for employed
-\providecommand{\tranShkEmp}{\theta}     % ind
-\providecommand{\TranShkEmp}{\Theta}     % agg
-\providecommand{\tranShkEmpMin}{\Min{\tranShkEmp}}    
-\providecommand{\tranShkEmpMax}{\Max{\tranShkEmp}}    
-\providecommand{\TranShkEmpMin}{\Min{\TranShkEmp}}    
-\providecommand{\TranShkEmpMax}{\Max{\TranShkEmp}}    
-\providecommand{\IncUnemp}{\mu}  % Income in unemployment
+%% MPC min and max values
+\providecommand{\MPCmin}{\Min{\MPC}}
+\providecommand{\MPCmax}{\Max{\MPC}}
+\providecommand{\MPCmaxmax}{\Max{\Max{\MPC}}}
+\providecommand{\MPCmaxmin}{\Max{\Min{\MPC}}}
+\providecommand{\MPCminmin}{\Min{\Min{\MPC}}}
 
-\providecommand{\MPCmin}{\Min{\kappa}}
-\providecommand{\MPCmax}{\Max{\kappa}}
-\providecommand{\MPCmaxmax}{\Max{\Max{\kappa}}}
-\providecommand{\MPCmaxmin}{\Max{\Min{\kappa}}}
-\providecommand{\MPCminmin}{\Min{\Min{\kappa}}}
+%% Growth factors
 \providecommand{\PermGroFacAgg}{\mathscr{G}}
 \providecommand{\permGroFacInd}{\mathit{G}}
 \providecommand{\PermGroFac}{\mathcal{G}}
-\providecommand{\PermGroFacRnd}{\Rnd{\PermGroFac}}            % normalized permanent income shock
+\providecommand{\PermGroFacRnd}{\Rnd{\PermGroFac}}       % normalization including shock
 \providecommand{\PermGroFacAdj}{\Min{\PermGroFac}}
 \providecommand{\PermGroFacuAdj}{\Min{\Min{\PermGroFac}}}
 \providecommand{\PermGroRte}{g}
 
+%% Other factors and rates 
+%%% probability of remaining \Alive is 1 - prob of dying
 \providecommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
-\providecommand{\RfreeAgg}{}\renewcommand{\RfreeAgg}{\Agg{\Rfree}}
+\providecommand{\diePrb}{\mathsf{d}} % Continuous time death rate (annual)
+\providecommand{\DiePrb}{\mathsf{D}} % Discrete-time one-period death rate
 
 \providecommand{\DeprFac}{\daleth}
-\providecommand{\deprRte}{\delta} % 
+\providecommand{\deprRte}{\delta}  % 
 \providecommand{\DiscFac}{\beta}
 \providecommand{\DiscFacAlt}{\beth}
 \providecommand{\DiscAlt}{}\renewcommand{\DiscAlt}{\beth}
@@ -274,7 +214,7 @@
 \providecommand{\APRte}{\text{\thorn}} % Former \Pat
 
 \providecommand{\GPFacRaw}{\APFac_{\PermGroFac}}
-\providecommand{\GPFacNrm}{\APFac_{\PermGroFacAdj}}
+\providecommand{\GPFacMod}{\APFac_{\PermGroFacAdj}}
 \providecommand{\RPFac}{\APFac_{\Rfree}}
 
 \providecommand{\RPRte}{\text{\thorn}_{\rfree}}
@@ -294,19 +234,13 @@
 \providecommand{\LivPrb}{\Alive}
 \providecommand{\livPrb}{\ell}
 
-\providecommand{\cncl}{}
-\renewcommand\cncl[1]{{\cancel{#1}}}
-
 \providecommand{\pNotZero}{(1-\pZero)}
 
 \providecommand{\CARA}{\alpha}
 \providecommand{\CRRA}{\rho}
-\providecommand{\diePrb}{\mathsf{d}} % Continuous time death rate 
-\providecommand{\DiePrb}{\mathsf{D}} % Discrete-time one-period death rate
-\providecommand{\Mean}{{\mathbb{M}}} % Mean
-\providecommand{\MPC}{{\kappa}}
+\providecommand{\MPC}{\kappa}
 \providecommand{\MPCFunc}{\pmb{\kappa}}
-\providecommand{\pZero}{{\wp}}
+\providecommand{\pZero}{q}
 
 \providecommand{\rfree}{\mathsf{r}}   % The net return rate on the safe asset
 \providecommand{\Rfree}{\mathsf{R}}   % The return factor on the safe asset 
@@ -362,11 +296,6 @@
 
 \newcommand{\uFuncInv}{\rotatebox{180}{$\uFunc$}}
 \newcommand{\muFuncInv}{{\rotatebox{180}{$\uFunc$}}}
-
-\providecommand{\Max}{\overline}
-\providecommand{\Min}{\underline}
-\providecommand{\Rnd}{\tilde}
-\providecommand{\Opt}{}\renewcommand{\Opt}{\breve}
 
 \newcommand{\HARKdocs}{\href{https://docs.econ-ark.org}{documentation}}
 \newcommand{\HARKrepo}{\texttt{\href{https://github.com/econ-ark/HARK}{HARK}}}
@@ -452,7 +381,22 @@
 
 \providecommand{\TMap}{}
 \renewcommand{\TMap}{\mathbb{T}}                  % Bellman operator for normalized problem
-\providecommand{\Ex}{{\mathbb{E}}} % Expectations operator defined in econtex.cls
+\providecommand{\Ex}{{\mathbb{E}}} % Expectations operator
+\providecommand{\Mean}{{\mathbb{M}}} % Mean operator
+\providecommand{\cncl}{} % cancellation
+\renewcommand\cncl[1]{{\cancel{#1}}}
+
+
+% ------------------ Modifiers ------------------ 
+
+\newcommand{\cnstr}[1]{\grave{#1}} %% Constrained
+\providecommand{\avg}{\bar}
+\providecommand{\Max}{\overline}
+\providecommand{\Min}{\underline}
+\providecommand{\Rnd}{\tilde}
+\providecommand{\Opt}{}\renewcommand{\Opt}{\breve}
+\providecommand{\Lvl}{\boldsymbol}
+
 
 % ------------------ Theorems ------------------ 
 \newtheorem{assumption}{Assumption}
@@ -465,8 +409,82 @@
 % ------------------ Relative Time ------------------ 
 \providecommand{\nxt}{\texttt{next}}
 \providecommand{\lst}{\texttt{last}}
-\providecommand{\now}{\texttt{now}}
 
 % Normalized return is special because G is normalizer
 \providecommand{\RNrmByG}{\mathscr{R}}
 \providecommand{\RNrmByGRnd}{\Rnd{\mathscr{R}}}
+
+% Functions
+% - Functions are Roman not italicized
+%% systematic
+\providecommand{\aFunc}{\mathrm{a}}
+\providecommand{\bFunc}{\mathrm{b}}
+\providecommand{\cFunc}{\mathrm{c}}
+\providecommand{\dFunc}{\mathrm{d}}
+\providecommand{\eFunc}{\mathrm{e}}
+\providecommand{\fFunc}{\mathrm{f}}
+\providecommand{\gFunc}{\mathrm{g}}
+\providecommand{\hFunc}{\mathrm{h}}
+\providecommand{\iFunc}{\mathrm{i}}
+\providecommand{\jFunc}{\mathrm{j}}
+\providecommand{\kFunc}{\mathrm{k}}
+\providecommand{\mFunc}{\mathrm{m}}
+\providecommand{\nFunc}{\mathrm{n}}
+\providecommand{\pFunc}{\mathrm{p}}
+\providecommand{\sFunc}{\mathrm{s}}
+\providecommand{\rFunc}{\mathrm{r}}
+\providecommand{\uFunc}{\mathrm{u}}
+\providecommand{\vFunc}{\mathrm{v}}
+\providecommand{\wFunc}{\mathrm{w}}
+\providecommand{\xFunc}{\mathrm{x}}
+\providecommand{\yFunc}{\mathrm{y}}
+\providecommand{\zFunc}{\mathrm{z}}
+
+\providecommand{\vFuncLvl}{\mathbf{v}}
+% level idiosyncratic
+\providecommand{\cFuncLvl}{}  % in case already defined 
+\providecommand{\vFuncLvl}{}  % 
+\renewcommand{\cFuncLvl}{\boldsymbol{\mathrm{c}}}   % consumption function 
+\renewcommand{\vFuncLvl}{\boldsymbol{\mathrm{v}}}   % value function
+
+\providecommand{\AFunc}{\mathrm{A}}
+\providecommand{\BFunc}{\mathrm{B}}
+\providecommand{\CFunc}{\mathrm{C}}
+\providecommand{\DFunc}{\mathrm{D}}
+\providecommand{\EFunc}{\mathrm{E}}
+\providecommand{\FFunc}{\mathrm{F}}
+\providecommand{\GFunc}{\mathrm{G}}
+\providecommand{\HFunc}{\mathrm{H}}
+\providecommand{\IFunc}{\mathrm{I}}
+\providecommand{\JFunc}{\mathrm{J}}
+\providecommand{\KFunc}{\mathrm{K}}
+\providecommand{\LFunc}{\mathrm{L}}
+\providecommand{\MFunc}{\mathrm{M}}
+\providecommand{\NFunc}{\mathrm{N}}
+\providecommand{\OFunc}{\mathrm{O}}
+\providecommand{\PFunc}{\mathrm{P}}
+\providecommand{\QFunc}{\mathrm{Q}}
+\providecommand{\RFunc}{\mathrm{R}}
+\providecommand{\SFunc}{\mathrm{S}}
+\providecommand{\TFunc}{\mathrm{T}}
+\providecommand{\UFunc}{\mathrm{U}}
+\providecommand{\VFunc}{\mathrm{V}}
+\providecommand{\WFunc}{\mathrm{W}}
+\providecommand{\XFunc}{\mathrm{X}}
+\providecommand{\YFunc}{\mathrm{Y}}
+\providecommand{\ZFunc}{\mathrm{Z}}
+
+%% ad-hoc
+\providecommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
+
+% Variables
+
+\providecommand{\CDF}{\mathcal{F}}
+
+% urls
+% - Home of Econ-ARK
+\providecommand{\ARKurl}{\href{https://econ-ark.org}{Econ-ARK}}
+\newcommand{\REMARK}{\href{https://github.com/econ-ark/REMARK}{REMARK}}
+
+% Add default link for html material at github llorracc
+%\newcommand{\llorraccio}[1]{\href{https://llorracc.github.io/#1}{\texttt{#1}}}

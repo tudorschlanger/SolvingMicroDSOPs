@@ -17,7 +17,7 @@
 %%% for the bibliography: \bibliographystyle{econtex}
 %%%
 %%% In addition to the options for scrartcl, this package includes an additional option
-%%% titlepage = include a title page (with command "\maketitle", or "\maketitleWithForcedDate{}")
+%%% titlepage = include a title page (with command "\maketitle")
 %%%
 %%% If an abstract is defined by \begin{abstract}\end{abstract} before \maketitle is invoked,
 %%% it will appear on the title page

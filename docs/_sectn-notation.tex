@@ -1,4 +1,4 @@
-\input{.resources/add-tex-search-paths}\documentclass[SolvingMicroDSOPs]{subfiles}
+\input{@resources/tex-add-search-paths}\documentclass[SolvingMicroDSOPs]{subfiles}
 \input{subfile-start}
 
 \begin{document}
@@ -25,7 +25,7 @@ The key is to distinguish, within each {\stg}'s Bellman problem, three {\moves}:
 \begin{enumerate}
 \item \textbf{\Arrival}: Incoming state variables (e.g., $\kNrm$) are known, but any shocks associated with the period have not been realized and decision(s) have not yet been made
 \item \textbf{\Decision}: The agent solves the decision problem for the period
-\item \textbf{\Continuation}: After all decisions have been made, their consequences are measured by evaluation of the continuing-value function at the values of the `outgoing' state variables (sometimes called `post-state' variables).
+\item \textbf{\Continuation}: After all decisions have been made, their consequences are measured by evaluation of the continuing-value function at the values of the `outgoing' state variables (sometimes called `post-state' variables)
 \end{enumerate}
 
 Notice that this specification is silent about when the stochastic shocks are realized; this may occur either before or after the decision stage.  In the consumption problem we are studying, the natural choice is to assume that the shocks have been realized before the decision is made so that the consumer knows what their income has been for the period.  In the portfolio problem we will examine below, the portfolio share decision must be made before the stochastic returns are realized.
@@ -46,7 +46,7 @@ When we want to refer to a specific {\move} in the {\stg} we will do so by using
   Notice that the value functions at different {\move}s of the {\stg} have distinct state variables.  Only $\kNrm$ is known at the beginning of the {\stg}, and other variables take on their values with equations like $b = k \RNrmByG$ and $\mNrm = \bNrm+\tranShkEmp.$  We will refer to such within-the-{\stg} creation of variables as `{\evltns}.'  So, the consumption stage problem has two {\evltns}: from $\kNrm$ to $\mNrm$ and from $\mNrm$ to $\aNrm$.
 
 \ifpseudo{
-\lstinputlisting{./Code/Python/snippets/pseudo-model-setup-prdT.py}\nopagebreak
+\lstinputlisting{pseudo-model-setup-prdT.py}\nopagebreak
 }{}
 
 \hypertarget{transitions}{}

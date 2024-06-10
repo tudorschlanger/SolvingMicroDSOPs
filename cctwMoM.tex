@@ -1,20 +1,20 @@
 % -*- mode: LaTeX; TeX-PDF-mode: t; -*- # Tell emacs the file type (for syntax)
-\input{.resources/add-tex-search-paths}
+\input{@resources/tex-add-search-paths}
 \documentclass[titlepage, headings=optiontotocandhead]{econtex}
 \newcommand{\texname}{cctwMoM} % Keyname for the paper
 %\usepackage{./.econtexRoot}         % Set paths (like, \LaTeXInputs)
 
-\usepackage{local-macros}   % defns for this project
-\usepackage{local-econark}  % econark defns
-\usepackage{local-packages} % LaTeX config in .resources/LaTeXInputs
-\usepackage{cctwMoM}        % LaTeX config in .resources/LaTeXInputs
+\usepackage{local-macros}     % defns for this project
+\usepackage{econark}          % econark defns
+\usepackage{local-packages}   % LaTeX config in @resources/LaTeXInputs
+\usepackage{cctwMoM}          % LaTeX config in @resources/LaTeXInputs
 
 % The providecommands below need to be fixed by
 % - examining the generated PDF to see whether it looks as it should
 % - if so, replacing \vEnd everywhere with \vEndPrd
 % - if not, further debugging with the end result that there is no vEnd
 
-\input{cctwMoM-options} % booleans that control whether certain features are on or off
+\input{\texname-options} % booleans that control whether certain features are on or off
 
 \hypersetup{colorlinks=true,
   pdfauthor={Christopher D. Carroll <ccarroll@jhu.edu>, Kiichi Tokuoka <ktokuoka <ktokuoka@imf.org>, Weifeng Wu <wwu19@jhu.edu> },
@@ -34,7 +34,9 @@
 % If not called from here and IS standalone, can make bib (or other content)
 \renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
 
-\bibliographystyle{econtex}
+%\bibliographystyle{econtex}
+\usepackage{econark-multibib} % use supplemental bib files if they exist
+
 \begin{document}
 
 \title{The Method of Moderation}
@@ -104,7 +106,7 @@ After showing how to use the method in the baseline case, we show how refine it 
 
 We assume that truly optimal behavior in the problem facing the consumer who understands all his risks is captured by
 \input{./Equations/MaxProb.tex}
-%\notinsubfile{\input{./.resources/latex/bibliography-blend}} \end{document}\endinput
+%\notinsubfile{\econarkmultibib{\texname}} \end{document}\endinput
 subject to
 \input{./Equations/DBCLevelStart.tex}
 where
@@ -199,7 +201,7 @@ For comparison to our new solution method, we use the endogenous gridpoints solu
 The method proposed here is not universally applicable.  For example, the method cannot be used for problems for which upper and lower bounds to the `true' solution are not known.  But many problems do have obvious upper and lower bounds, and in those cases (as in the consumption example used in the paper), the method may result in substantial improvements in accuracy and stability of solutions.
 
 \vfill\clearpage
-\input{.resources/latex/bibliography-blend} \end{document}\endinput
+\econarkmultibib{\texname} \end{document}\endinput
 
 % Local Variables:
 % TeX-master-file: t

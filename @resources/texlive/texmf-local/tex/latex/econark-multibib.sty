@@ -1,0 +1,29 @@
+\ProvidesPackage{econark-multibib}[2024/06/08 Supports system.bib and filename-Add-Refs.bib]
+
+\RequirePackage{ifthen}
+
+\newcommand{\econarkmultibib}[1]{%
+  \def\filename{#1}%
+  
+  \IfFileExists{\filename-Add-Refs.bib}{%
+    \IfFileExists{system.bib}{%
+      \typeout{References in \filename-Add-Refs.bib will take precedence over those elsewhere}%
+      \typeout{References in default global system.bib will be used for items not found elsewhere}%
+      \bibliography{\filename-Add-Refs,\filename,system}%
+    }{%
+      \typeout{References in \filename-Add-Refs.bib will take precedence over those elsewhere}%
+      \typeout{Found no global database file}%
+      \bibliography{\filename-Add-Refs,\filename}%
+    }%
+  }{%
+    \IfFileExists{system.bib}{%
+      \typeout{References in default global system.bib will be used for items not found elsewhere}%
+      \bibliography{\filename,system}%
+    }{%
+      \typeout{Found no global database file}%
+      \bibliography{\filename}%
+    }%
+  }%
+}
+
+\endinput

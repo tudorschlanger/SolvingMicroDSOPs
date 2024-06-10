@@ -1,0 +1,63 @@
+
+\hypertarget{the-usual-theory}{}
+\section{The Usual Theory, and a Bit More Notation}\label{sec:the-usual-theory}
+
+
+For reference and to illustrate our new notation, we will now derive the Euler equation and other standard results for the problem described above.
+Since we can write value as of the end of the consumption stage as a function of $\aNrm$:
+\begin{equation*}\begin{gathered}\begin{aligned}
+  \vEndStg(\aNrm) & \leftassign \vFunc_{\prd_\cntn}(\aNrm) \leftassign \DiscFac \vBegPrdNxt(\aNrm) = \DiscFac \Ex_{\BegPrdNxt}[\PermGroFac_{\prd+1}^{1-\CRRA}\vFunc_{\prd+1}(\overbrace{a (\Rfree / \PermGroFac_{\prd+1})+\tranShkEmp_{\prd+1}}^{\mNrm_{\prd+1}})],
+\end{aligned}\end{gathered}\end{equation*}
+the first order condition for \eqref{eq:vusual} with respect to $\aNrm$ (given $\mNrm_{\prd}$) is
+\begin{equation}\begin{gathered}\begin{aligned}
+      \uFunc^{\cNrm}(\mNrm_{\prd}-\aNrm) = \vEndPrd^{\aNrm}(a) & = \Ex_{\BegPrdNxt}[\DiscFac \RNrmByG_{\prd+1}\PermGroFac_{\prd+1}^{1-\CRRA}{\vFunc}^\mNrm_{\prd+1}(\mNrm_{\prd+1})]  \label{eq:upceqEvtp1}
+      \\                        & =  \Ex_{\BegPrdNxt}[\DiscFac\Rfree\phantom{._{\prd+1}}\PermGroFac_{\prd+1}^{\phantom{1}-\CRRA}{\vFunc}^{\mNrm}_{\prd+1}(\mNrm_{\prd+1})]
+    \end{aligned}\end{gathered}\end{equation}
+and because the \handoutC{Envelope} theorem tells us that
+\begin{equation}\begin{gathered}\begin{aligned}
+      {\vFunc}^{\mNrm}_{\prd}(\mNrm_{\prd})  & =  \Ex_{\BegPrdNxt} [\DiscFac \Rfree \PermGroFac_{\prd+1}^{-\CRRA}{\vFunc}^{\mNrm}_{\prd+1}(\mNrm_{\prd+1})] \label{eq:envelope}
+    \end{aligned}\end{gathered}\end{equation}
+we can substitute the LHS of \eqref{eq:envelope} for the RHS of
+(\ref{eq:upceqEvtp1}) to get
+  \begin{equation}\begin{gathered}\begin{aligned}
+        \uFunc^{\cNrm}(\cNrm_{\prd})  & = {\vFunc}^{\mNrm}_{\prd}(\mNrm_{\prd})\label{eq:upcteqvtp}
+      \end{aligned}\end{gathered}\end{equation}
+and rolling forward one {\interval},
+\begin{equation}\begin{gathered}\begin{aligned}
+      \uFunc^{\cNrm}(\cNrm_{\prd+1})  & = \vFunc^{\mNrm}_{\prd+1}({a}_{\prd}\RNrmByG_{\prd+1}+\tranShkEmp_{\prd+1}) \label{eq:upctp1EqVpxtp1}
+    \end{aligned}\end{gathered}\end{equation}
+so that substituting the LHS in equation (\ref{eq:upceqEvtp1}) finally gives us the Euler equation for consumption:
+  \begin{equation}\begin{gathered}\begin{aligned}
+        \uFunc^{\cNrm}(\cNrm_{\prd})  & = \ExEndPrd[\DiscFac \Rfree \PermGroFac_{\prd+1}^{-\CRRA}\uFunc^{\cNrm}(\cNrm_{\prd+1})] \label{eq:cEuler}.
+      \end{aligned}\end{gathered}\end{equation}
+
+We can now restate the problem \eqref{eq:vusual} with our new within-stage notation:
+\begin{equation}\begin{gathered}\begin{aligned}
+      \vFunc(m) & = \max_{\cNrm} ~~ \uFunc(\cNrm)+ \vEndStg(\mNrm-\cNrm)
+\end{aligned}\end{gathered}\end{equation}
+whose first order condition with respect to $\cNrm$ is
+\begin{equation}\begin{gathered}\begin{aligned}
+  \uFunc^{\cNrm}(\cNrm) &= \vEndStg^{\aNrm}(\mNrm-\cNrm)  \label{eq:upEqbetaOp} % \label{eq:FOCnew} 
+\end{aligned}\end{gathered}\end{equation}
+which is mathematically equivalent to the usual Euler equation for consumption.
+
+We will revert to this formulation when we reach section~\ref{subsec:egm}.
+
+\begin{comment}
+  \subsection{Implementation in Python}
+
+  The code implementing the tasks outlined each of the sections to come is available in the \texttt{\href{https://econ-ark.org/materials/SolvingMicroDSOPs}{SolvingMicroDSOPs}} jupyter notebook, written in \href{https://python.org}{Python}. The notebook imports various modules, including the standard \texttt{numpy} and \texttt{scipy} modules used for numerical methods in Python, as well as some user-defined modules designed to provide numerical solutions to the consumer's problem from the previous section. Before delving into the computational exercise, it is essential to touch on the practicality of these custom modules.
+
+  \subsubsection{Useful auxilliary files}
+
+  In this exercise, two primary user-defined modules are frequently imported and utilized. The first is the \texttt{gothic\_class} module, which contains functions describing the end-of-period value functions found in equations \eqref{eq:vBegStg} - \eqref{eq:EndPrd} (and the corresponding first and second derivatives). %The advantage of defining functions in the code which decompose the consumer's optimal behavior in a given period will become evident in section \ref{subsec:transformation}
+
+  The \texttt{resources} module is also used repeatedly throughout the notebook. This file has three primary objectives: (i) providing functions that discretize the continuous distributions from the theoretical model that describe the uncertainty a consumer faces, (ii) defining the utility function over consumption under a number of specifications, and (iii) enhancing the grid of end-of-period assets for which functions (such as those from the \texttt{gothic\_class} module) will be defined. These objectives will be discussed in greater detail and with respect to the numerical methods used to the problem in subsequent sections of this document.
+\end{comment}
+
+
+
+% Local Variables:
+% eval: (setq prettify-symbols-unprettify-at-point 'right-edge)
+% End:
+% coding: utf-8
