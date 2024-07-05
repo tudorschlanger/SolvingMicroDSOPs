@@ -1119,6 +1119,9 @@ class Utility(object):
             # Regular case:
             return c ** (1.0 - self.gamma) / (1.0 - self.gamma)
 
+    def __repr__(self):
+        return 'Utility object with RRA coefficient: {}'.format(self.gamma)
+    
     def prime(self, c):
         if self.gamma == 1:
             # Log case:
